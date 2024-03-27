@@ -1,3 +1,3 @@
-String baseUrl = 'https://fakestoreapi.com/';
-String authPath = 'auth/';
+String baseUrl = 'https://api.escuelajs.co/';
+String authPath = 'api/v1/auth/';
 String authEndPoint = 'login';

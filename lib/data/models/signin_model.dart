@@ -6,7 +6,7 @@ part 'signin_model.g.dart';
 @freezed
 class SigninModel with _$SigninModel {
   const factory SigninModel({
-    required String username,
+    required String email,
     required String password,
   }) = _SigninModel;
 

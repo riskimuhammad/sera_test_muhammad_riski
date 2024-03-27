@@ -8,12 +8,12 @@ part of 'signin_model.dart';
 
 _$SigninModelImpl _$$SigninModelImplFromJson(Map<String, dynamic> json) =>
     _$SigninModelImpl(
-      username: json['username'] as String,
+      email: json['email'] as String,
       password: json['password'] as String,
     );
 
 Map<String, dynamic> _$$SigninModelImplToJson(_$SigninModelImpl instance) =>
     <String, dynamic>{
-      'username': instance.username,
+      'email': instance.email,
       'password': instance.password,
     };

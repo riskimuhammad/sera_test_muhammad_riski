@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$NetworkParameter {
   String get url => throw _privateConstructorUsedError;
-  Map<dynamic, String>? get requestBody => throw _privateConstructorUsedError;
-  Map<dynamic, String>? get header => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get requestBody => throw _privateConstructorUsedError;
+  Map<String, String>? get header => throw _privateConstructorUsedError;
   Map<dynamic, String>? get queryParameters =>
       throw _privateConstructorUsedError;
 
@@ -35,8 +35,8 @@ abstract class $NetworkParameterCopyWith<$Res> {
   @useResult
   $Res call(
       {String url,
-      Map<dynamic, String>? requestBody,
-      Map<dynamic, String>? header,
+      Map<String, dynamic>? requestBody,
+      Map<String, String>? header,
       Map<dynamic, String>? queryParameters});
 }
 
@@ -66,11 +66,11 @@ class _$NetworkParameterCopyWithImpl<$Res, $Val extends NetworkParameter>
       requestBody: freezed == requestBody
           ? _value.requestBody
           : requestBody // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, String>?,
+              as Map<String, dynamic>?,
       header: freezed == header
           ? _value.header
           : header // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, String>?,
+              as Map<String, String>?,
       queryParameters: freezed == queryParameters
           ? _value.queryParameters
           : queryParameters // ignore: cast_nullable_to_non_nullable
@@ -89,8 +89,8 @@ abstract class _$$NetworkParameterImplCopyWith<$Res>
   @useResult
   $Res call(
       {String url,
-      Map<dynamic, String>? requestBody,
-      Map<dynamic, String>? header,
+      Map<String, dynamic>? requestBody,
+      Map<String, String>? header,
       Map<dynamic, String>? queryParameters});
 }
 
@@ -118,11 +118,11 @@ class __$$NetworkParameterImplCopyWithImpl<$Res>
       requestBody: freezed == requestBody
           ? _value._requestBody
           : requestBody // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, String>?,
+              as Map<String, dynamic>?,
       header: freezed == header
           ? _value._header
           : header // ignore: cast_nullable_to_non_nullable
-              as Map<dynamic, String>?,
+              as Map<String, String>?,
       queryParameters: freezed == queryParameters
           ? _value._queryParameters
           : queryParameters // ignore: cast_nullable_to_non_nullable
@@ -136,8 +136,8 @@ class __$$NetworkParameterImplCopyWithImpl<$Res>
 class _$NetworkParameterImpl implements _NetworkParameter {
   const _$NetworkParameterImpl(
       {required this.url,
-      final Map<dynamic, String>? requestBody,
-      final Map<dynamic, String>? header,
+      final Map<String, dynamic>? requestBody,
+      final Map<String, String>? header,
       final Map<dynamic, String>? queryParameters})
       : _requestBody = requestBody,
         _header = header,
@@ -145,9 +145,9 @@ class _$NetworkParameterImpl implements _NetworkParameter {
 
   @override
   final String url;
-  final Map<dynamic, String>? _requestBody;
+  final Map<String, dynamic>? _requestBody;
   @override
-  Map<dynamic, String>? get requestBody {
+  Map<String, dynamic>? get requestBody {
     final value = _requestBody;
     if (value == null) return null;
     if (_requestBody is EqualUnmodifiableMapView) return _requestBody;
@@ -155,9 +155,9 @@ class _$NetworkParameterImpl implements _NetworkParameter {
     return EqualUnmodifiableMapView(value);
   }
 
-  final Map<dynamic, String>? _header;
+  final Map<String, String>? _header;
   @override
-  Map<dynamic, String>? get header {
+  Map<String, String>? get header {
     final value = _header;
     if (value == null) return null;
     if (_header is EqualUnmodifiableMapView) return _header;
@@ -212,16 +212,16 @@ class _$NetworkParameterImpl implements _NetworkParameter {
 abstract class _NetworkParameter implements NetworkParameter {
   const factory _NetworkParameter(
       {required final String url,
-      final Map<dynamic, String>? requestBody,
-      final Map<dynamic, String>? header,
+      final Map<String, dynamic>? requestBody,
+      final Map<String, String>? header,
       final Map<dynamic, String>? queryParameters}) = _$NetworkParameterImpl;
 
   @override
   String get url;
   @override
-  Map<dynamic, String>? get requestBody;
+  Map<String, dynamic>? get requestBody;
   @override
-  Map<dynamic, String>? get header;
+  Map<String, String>? get header;
   @override
   Map<dynamic, String>? get queryParameters;
   @override

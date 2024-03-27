@@ -6,8 +6,8 @@ part 'network_parameters.freezed.dart';
 class NetworkParameter with _$NetworkParameter {
   const factory NetworkParameter({
     required String url,
-    Map<dynamic, String>? requestBody,
-    Map<dynamic, String>? header,
+    Map<String, dynamic>? requestBody,
+    Map<String, String>? header,
     Map<dynamic, String>? queryParameters,
   }) = _NetworkParameter;
 }

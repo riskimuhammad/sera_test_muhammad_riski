@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:http/src/response.dart';
 import 'package:test_muhammad_riski/data/providers/network/http/http_contract.dart';
