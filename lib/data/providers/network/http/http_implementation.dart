@@ -8,7 +8,7 @@ import 'package:test_muhammad_riski/data/providers/network/model/network_excepti
 import 'package:test_muhammad_riski/data/providers/network/model/network_model.dart';
 import 'package:http/http.dart' as http;
 
-class HttpImplementation implements HttpNetwork {
+class HttpNetworkImplementation implements HttpNetwork {
   @override
   ApiResult unknownException = const ApiResult.failure(
       networkException: NetworkException.httpException());
