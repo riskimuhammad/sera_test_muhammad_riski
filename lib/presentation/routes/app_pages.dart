@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:test_muhammad_riski/domain/bindings/signin_binding.dart';
 import 'package:test_muhammad_riski/domain/bindings/splash_binding.dart';
 import 'package:test_muhammad_riski/presentation/routes/app_routes.dart';
 import 'package:test_muhammad_riski/presentation/screens/cart/cart_screen.dart';
@@ -33,6 +34,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.signin,
       page: () => SigninScreen(),
+      binding: SigninBinding(),
     )
   ];
 }

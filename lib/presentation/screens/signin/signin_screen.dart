@@ -5,6 +5,10 @@ class SigninScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Column(
+        children: [Text('signin')],
+      ),
+    );
   }
 }
