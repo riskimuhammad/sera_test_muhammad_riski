@@ -6,6 +6,7 @@ import 'package:test_muhammad_riski/data/providers/network/model/api_results.dar
 import 'package:test_muhammad_riski/domain/repository/repository.dart';
 
 import '../../data/models/signin_model.dart';
+import '../../domain/entity/signin_entity.dart';
 
 class SigninController extends GetxController {
   final Repository repository;
@@ -13,6 +14,7 @@ class SigninController extends GetxController {
   RxBool obscureText = false.obs;
   TextEditingController emailController = TextEditingController(text: '');
   TextEditingController passwordController = TextEditingController(text: '');
+  Rx<SigninEntity> signinEntity = SigninEntity.fromJson({}).obs;
 
   showPassword() {
     obscureText.value = !obscureText.value;
@@ -24,7 +26,7 @@ class SigninController extends GetxController {
     ApiResult result = await repository.signin(model);
     result.when(
       success: (data, url, headers, statusCode) {
-        log('S data ini adalah ${data}');
+        signinEntity.value = signinEntityFromJson(data);
       },
       error: (data, url, headers, statusCode) {
         log('E data ini adalah ${data} ${statusCode} ${url}');

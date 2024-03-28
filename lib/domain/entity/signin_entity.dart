@@ -8,9 +8,9 @@ SigninEntity signinEntityFromJson(String str) =>
 
 @freezed
 class SigninEntity with _$SigninEntity {
-  const factory SigninEntity({
-    required String token,
-  }) = _SigninEntity;
+  const factory SigninEntity(
+      {required String access_token,
+      required String refresh_token}) = _SigninEntity;
 
   factory SigninEntity.fromJson(Map<String, dynamic> json) =>
       _$SigninEntityFromJson(json);
