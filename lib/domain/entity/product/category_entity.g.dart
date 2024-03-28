@@ -1,19 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product_entity.dart';
+part of 'category_entity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductEntityImpl _$$ProductEntityImplFromJson(Map<String, dynamic> json) =>
-    _$ProductEntityImpl(
+_$CategoryEntityImpl _$$CategoryEntityImplFromJson(Map<String, dynamic> json) =>
+    _$CategoryEntityImpl(
       id: json['id'] as int?,
       name: json['name'] as String?,
       image: json['image'] as String?,
     );
 
-Map<String, dynamic> _$$ProductEntityImplToJson(_$ProductEntityImpl instance) =>
+Map<String, dynamic> _$$CategoryEntityImplToJson(
+        _$CategoryEntityImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

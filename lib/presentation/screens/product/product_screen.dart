@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_muhammad_riski/core/extensions/material_color.dart';
 import 'package:test_muhammad_riski/core/extensions/text_style.dart';
 import 'package:test_muhammad_riski/presentation/controllers/product_controller.dart';
 
@@ -10,10 +11,11 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ProductController>(initState: (state) {
       _controller.sessionData();
+      _controller.getAllCategory();
     }, builder: (controller) {
       return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(200),
+          preferredSize: Size.fromHeight(250),
           child: AppBar(
             leadingWidth: 65,
             leading: Obx(
@@ -52,6 +54,37 @@ class ProductScreen extends StatelessWidget {
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: MTextStyle.textStyleFZ28W500),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Container(
+                          height: 35,
+                          width: MediaQuery.of(context).size.width,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: controller.listCategories.length,
+                            itemBuilder: (context, index) => Container(
+                              padding: EdgeInsets.only(
+                                  left: 16, right: 16, top: 8, bottom: 8),
+                              margin: EdgeInsets.only(right: 10),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: MColors.blue.shade100.withOpacity(.1)),
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    maxRadius: 15,
+                                    backgroundImage: NetworkImage(
+                                        "${controller.listCategories[index].image}"),
+                                  ),
+                                  SizedBox(width: 5),
+                                  Text(controller.listCategories[index].name ??
+                                      '')
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     )),
               ],
