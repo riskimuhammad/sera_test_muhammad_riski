@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:test_muhammad_riski/domain/bindings/product_binding.dart';
 import 'package:test_muhammad_riski/domain/bindings/signin_binding.dart';
 import 'package:test_muhammad_riski/domain/bindings/splash_binding.dart';
 import 'package:test_muhammad_riski/presentation/routes/app_routes.dart';
@@ -20,9 +21,9 @@ class AppPages {
       page: () => DetailProductScreen(),
     ),
     GetPage(
-      name: AppRoutes.product,
-      page: () => ProductScreen(),
-    ),
+        name: AppRoutes.product,
+        page: () => ProductScreen(),
+        binding: ProductBinding()),
     GetPage(
       name: AppRoutes.cart,
       page: () => CartScreen(),

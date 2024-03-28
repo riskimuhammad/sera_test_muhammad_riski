@@ -52,4 +52,25 @@ class RepositoryImplementation extends Repository {
     }
     return apiResult;
   }
+
+  @override
+  Future<ApiResult> getAllCategory() async {
+    ApiResult apiResult;
+    try {
+      apiResult = await network.callApi(
+          method: NetworkModel.get(
+        networkParameter: NetworkParameter(
+          url: baseUrl + categoryPath + categoryEndPoint,
+          header: {
+            "Content-type": "application/json",
+            "Accept": "application/json",
+          },
+        ),
+      ));
+    } catch (e) {
+      apiResult = const ApiResult.failure(
+          networkException: NetworkException.unknownExeption());
+    }
+    return apiResult;
+  }
 }

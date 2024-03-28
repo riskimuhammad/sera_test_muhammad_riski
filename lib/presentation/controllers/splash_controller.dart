@@ -25,8 +25,7 @@ class SplashController extends GetxController {
     final res = await localRepository.getToken();
     res.when(
       success: (data) {
-        final dataDecode = jsonDecode(data) as String;
-        sessionChecker(dataDecode);
+        sessionChecker(data);
       },
       failure: (data) {
         Get.offAndToNamed(AppRoutes.signin);

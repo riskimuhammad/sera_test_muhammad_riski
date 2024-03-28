@@ -8,8 +8,12 @@ SigninEntity signinEntityFromJson(String str) =>
 
 @freezed
 class SigninEntity with _$SigninEntity {
-  const factory SigninEntity({String? access_token, String? refresh_token}) =
-      _SigninEntity;
+  const factory SigninEntity(
+      {String? access_token,
+      String? refresh_token,
+      String? name,
+      String? role,
+      String? avatar}) = _SigninEntity;
 
   factory SigninEntity.fromJson(Map<String, dynamic> json) =>
       _$SigninEntityFromJson(json);

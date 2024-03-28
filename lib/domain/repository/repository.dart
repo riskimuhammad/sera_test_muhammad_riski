@@ -5,4 +5,6 @@ import '../../data/models/auth/signin_model.dart';
 abstract class Repository {
   Future<ApiResult> signin(SigninModel model);
   Future<ApiResult> sessionAuth(SigninModel model);
+
+  Future<ApiResult> getAllCategory();
 }

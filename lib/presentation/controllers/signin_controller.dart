@@ -3,12 +3,12 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:test_muhammad_riski/data/models/session/session_model.dart';
 import 'package:test_muhammad_riski/data/providers/network/model/api_results.dart';
+import 'package:test_muhammad_riski/domain/entity/auth/signin_entity.dart';
 import 'package:test_muhammad_riski/domain/repository/local_repository.dart';
 import 'package:test_muhammad_riski/domain/repository/repository.dart';
 import 'package:test_muhammad_riski/presentation/routes/app_routes.dart';
 
 import '../../data/models/auth/signin_model.dart';
-import '../../domain/entity/signin_entity.dart';
 
 class SigninController extends GetxController {
   final Repository repository;

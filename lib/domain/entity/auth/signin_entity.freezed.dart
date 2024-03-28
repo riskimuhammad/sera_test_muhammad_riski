@@ -22,6 +22,9 @@ SigninEntity _$SigninEntityFromJson(Map<String, dynamic> json) {
 mixin _$SigninEntity {
   String? get access_token => throw _privateConstructorUsedError;
   String? get refresh_token => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get role => throw _privateConstructorUsedError;
+  String? get avatar => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +38,12 @@ abstract class $SigninEntityCopyWith<$Res> {
           SigninEntity value, $Res Function(SigninEntity) then) =
       _$SigninEntityCopyWithImpl<$Res, SigninEntity>;
   @useResult
-  $Res call({String? access_token, String? refresh_token});
+  $Res call(
+      {String? access_token,
+      String? refresh_token,
+      String? name,
+      String? role,
+      String? avatar});
 }
 
 /// @nodoc
@@ -53,6 +61,9 @@ class _$SigninEntityCopyWithImpl<$Res, $Val extends SigninEntity>
   $Res call({
     Object? access_token = freezed,
     Object? refresh_token = freezed,
+    Object? name = freezed,
+    Object? role = freezed,
+    Object? avatar = freezed,
   }) {
     return _then(_value.copyWith(
       access_token: freezed == access_token
@@ -62,6 +73,18 @@ class _$SigninEntityCopyWithImpl<$Res, $Val extends SigninEntity>
       refresh_token: freezed == refresh_token
           ? _value.refresh_token
           : refresh_token // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -75,7 +98,12 @@ abstract class _$$SigninEntityImplCopyWith<$Res>
       __$$SigninEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? access_token, String? refresh_token});
+  $Res call(
+      {String? access_token,
+      String? refresh_token,
+      String? name,
+      String? role,
+      String? avatar});
 }
 
 /// @nodoc
@@ -91,6 +119,9 @@ class __$$SigninEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? access_token = freezed,
     Object? refresh_token = freezed,
+    Object? name = freezed,
+    Object? role = freezed,
+    Object? avatar = freezed,
   }) {
     return _then(_$SigninEntityImpl(
       access_token: freezed == access_token
@@ -101,6 +132,18 @@ class __$$SigninEntityImplCopyWithImpl<$Res>
           ? _value.refresh_token
           : refresh_token // ignore: cast_nullable_to_non_nullable
               as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -108,7 +151,12 @@ class __$$SigninEntityImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SigninEntityImpl implements _SigninEntity {
-  const _$SigninEntityImpl({this.access_token, this.refresh_token});
+  const _$SigninEntityImpl(
+      {this.access_token,
+      this.refresh_token,
+      this.name,
+      this.role,
+      this.avatar});
 
   factory _$SigninEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$SigninEntityImplFromJson(json);
@@ -117,10 +165,16 @@ class _$SigninEntityImpl implements _SigninEntity {
   final String? access_token;
   @override
   final String? refresh_token;
+  @override
+  final String? name;
+  @override
+  final String? role;
+  @override
+  final String? avatar;
 
   @override
   String toString() {
-    return 'SigninEntity(access_token: $access_token, refresh_token: $refresh_token)';
+    return 'SigninEntity(access_token: $access_token, refresh_token: $refresh_token, name: $name, role: $role, avatar: $avatar)';
   }
 
   @override
@@ -131,12 +185,16 @@ class _$SigninEntityImpl implements _SigninEntity {
             (identical(other.access_token, access_token) ||
                 other.access_token == access_token) &&
             (identical(other.refresh_token, refresh_token) ||
-                other.refresh_token == refresh_token));
+                other.refresh_token == refresh_token) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.role, role) || other.role == role) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, access_token, refresh_token);
+  int get hashCode =>
+      Object.hash(runtimeType, access_token, refresh_token, name, role, avatar);
 
   @JsonKey(ignore: true)
   @override
@@ -155,7 +213,10 @@ class _$SigninEntityImpl implements _SigninEntity {
 abstract class _SigninEntity implements SigninEntity {
   const factory _SigninEntity(
       {final String? access_token,
-      final String? refresh_token}) = _$SigninEntityImpl;
+      final String? refresh_token,
+      final String? name,
+      final String? role,
+      final String? avatar}) = _$SigninEntityImpl;
 
   factory _SigninEntity.fromJson(Map<String, dynamic> json) =
       _$SigninEntityImpl.fromJson;
@@ -164,6 +225,12 @@ abstract class _SigninEntity implements SigninEntity {
   String? get access_token;
   @override
   String? get refresh_token;
+  @override
+  String? get name;
+  @override
+  String? get role;
+  @override
+  String? get avatar;
   @override
   @JsonKey(ignore: true)
   _$$SigninEntityImplCopyWith<_$SigninEntityImpl> get copyWith =>

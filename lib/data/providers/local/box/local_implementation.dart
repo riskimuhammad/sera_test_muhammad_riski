@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:test_muhammad_riski/data/providers/local/model/local_model.dart';
 import 'package:test_muhammad_riski/data/providers/local/box/local_contract.dart';
@@ -17,7 +15,7 @@ class BoxContractImplementation extends BoxContract {
         },
         get: (localSessionParameter) async {
           final res = await box.read(localSessionParameter.key) ?? '';
-          return jsonEncode(res);
+          return res;
         },
         remove: (localSessionParameter) async {
           await box.remove(localSessionParameter.key);
