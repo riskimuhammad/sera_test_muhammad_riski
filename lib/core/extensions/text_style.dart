@@ -14,10 +14,18 @@ class MTextStyle {
       color: MColors.primaryColorsGrey.shade600, fontWeight: FontWeight.w400);
   static TextStyle textStyleNormalCWhite = TextStyle(
       color: MColors.primaryColorsGrey.shade900, fontWeight: FontWeight.w600);
+
+  static TextStyle textStyleNormalW600 =
+      TextStyle(color: MColors.black, fontWeight: FontWeight.w600);
+  static TextStyle textStyleNormalW400 =
+      TextStyle(color: MColors.black, fontWeight: FontWeight.w400);
   static TextStyle textStyleFZ18CAmberBold = TextStyle(
       fontSize: 18, color: MColors.amber, fontWeight: FontWeight.bold);
   static TextStyle textStyleFZ15W300 = TextStyle(
       fontSize: 15, color: MColors.black, fontWeight: FontWeight.w300);
+
+  static TextStyle textStyleFZ15W400 = TextStyle(
+      fontSize: 15, color: MColors.black, fontWeight: FontWeight.w400);
   static TextStyle textStyleFZ28W500 = TextStyle(
       fontSize: 28, color: MColors.black, fontWeight: FontWeight.w500);
   static TextStyle textStyleFZ18CDarkBlueBold = TextStyle(

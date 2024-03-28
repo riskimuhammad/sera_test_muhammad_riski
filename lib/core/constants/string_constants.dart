@@ -3,6 +3,7 @@ String authPath = 'api/v1/auth/';
 String authEndPoint = 'login';
 String profileEndPoint = 'profile';
 
-//CATEGORIES PATH,ENDPOINT
-String categoryPath = 'api/v1/';
+//PRODUCT PATH,ENDPOINT
+String productPath = 'api/v1/';
 String categoryEndPoint = 'categories';
+String productEndPoint = 'products';

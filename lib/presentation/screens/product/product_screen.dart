@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test_muhammad_riski/core/extensions/material_color.dart';
-import 'package:test_muhammad_riski/core/extensions/text_style.dart';
+
 import 'package:test_muhammad_riski/presentation/controllers/product_controller.dart';
+import 'package:test_muhammad_riski/presentation/screens/product/widget/appbar_product.dart';
+import 'package:test_muhammad_riski/presentation/screens/product/widget/list_category.dart';
+import 'package:test_muhammad_riski/presentation/screens/product/widget/list_product.dart';
 
 class ProductScreen extends StatelessWidget {
   ProductScreen({super.key});
   final _controller = Get.find<ProductController>();
+  final _category = ListCategory();
+  final _appbar = AppbarProduct();
+  final _listProduct = ListProduct();
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProductController>(initState: (state) {
       _controller.sessionData();
       _controller.getAllCategory();
+      _controller.getProduct();
     }, builder: (controller) {
       return Scaffold(
         appBar: PreferredSize(
@@ -19,27 +25,11 @@ class ProductScreen extends StatelessWidget {
           child: AppBar(
             leadingWidth: 65,
             leading: Obx(
-              () => Padding(
-                padding: const EdgeInsets.only(left: 16),
-                child: CircleAvatar(
-                  onBackgroundImageError: (exception, stackTrace) => SizedBox(),
-                  backgroundImage:
-                      NetworkImage('${_controller.dataUser.value.avatar}'),
-                ),
-              ),
+              () => _appbar.leading(controller.dataUser.value),
             ),
             centerTitle: true,
-            title: Text.rich(TextSpan(children: [
-              TextSpan(text: 'Shop', style: MTextStyle.textStyleFZ18CAmberBold),
-              TextSpan(
-                  text: 'store', style: MTextStyle.textStyleFZ18CDarkBlueBold)
-            ])),
-            actions: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-              IconButton(
-                  onPressed: () {}, icon: Icon(Icons.shopping_cart_outlined)),
-              SizedBox(width: 4),
-            ],
+            title: _appbar.title(),
+            actions: _appbar.action(),
             flexibleSpace: Stack(
               children: [
                 Positioned(
@@ -49,47 +39,24 @@ class ProductScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Hi, Jhon', style: MTextStyle.textStyleFZ15W300),
-                        Text('What are you looking for today?',
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: MTextStyle.textStyleFZ28W500),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Container(
-                          height: 35,
-                          width: MediaQuery.of(context).size.width,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: controller.listCategories.length,
-                            itemBuilder: (context, index) => Container(
-                              padding: EdgeInsets.only(
-                                  left: 16, right: 16, top: 8, bottom: 8),
-                              margin: EdgeInsets.only(right: 10),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: MColors.blue.shade100.withOpacity(.1)),
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    maxRadius: 15,
-                                    backgroundImage: NetworkImage(
-                                        "${controller.listCategories[index].image}"),
-                                  ),
-                                  SizedBox(width: 5),
-                                  Text(controller.listCategories[index].name ??
-                                      '')
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
+                        _appbar.info(),
+                        Obx(() => _category.category(context,
+                            listCategories: controller.listCategories))
                       ],
                     )),
               ],
             ),
           ),
+        ),
+        body: Container(
+          margin: EdgeInsets.only(left: 16, right: 16, top: 16),
+          child: Obx(() {
+            if (controller.loadingProduct.isTrue) {
+              return _listProduct.loadingProduct();
+            } else {
+              return _listProduct.productLoaded(controller.listProduct);
+            }
+          }),
         ),
       );
     });

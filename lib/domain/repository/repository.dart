@@ -1,3 +1,4 @@
+import 'package:test_muhammad_riski/data/models/product/product_model.dart';
 import 'package:test_muhammad_riski/data/providers/network/model/api_results.dart';
 
 import '../../data/models/auth/signin_model.dart';
@@ -7,4 +8,5 @@ abstract class Repository {
   Future<ApiResult> sessionAuth(SigninModel model);
 
   Future<ApiResult> getAllCategory();
+  Future<ApiResult> getProduct(ProductModel model);
 }

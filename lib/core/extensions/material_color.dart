@@ -245,5 +245,6 @@ class MColors {
   );
 
   static Color transparans = Colors.transparent;
+  static Color white = Colors.white;
   static Color black = Color(0xff101214);
 }

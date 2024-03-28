@@ -1,4 +1,5 @@
 import 'package:test_muhammad_riski/core/constants/string_constants.dart';
+import 'package:test_muhammad_riski/data/models/product/product_model.dart';
 import 'package:test_muhammad_riski/data/providers/network/contract.dart';
 import 'package:test_muhammad_riski/data/providers/network/model/api_results.dart';
 import 'package:test_muhammad_riski/data/providers/network/model/network_exception.dart';
@@ -60,7 +61,31 @@ class RepositoryImplementation extends Repository {
       apiResult = await network.callApi(
           method: NetworkModel.get(
         networkParameter: NetworkParameter(
-          url: baseUrl + categoryPath + categoryEndPoint,
+          url: baseUrl + productPath + categoryEndPoint,
+          header: {
+            "Content-type": "application/json",
+            "Accept": "application/json",
+          },
+        ),
+      ));
+    } catch (e) {
+      apiResult = const ApiResult.failure(
+          networkException: NetworkException.unknownExeption());
+    }
+    return apiResult;
+  }
+
+  @override
+  Future<ApiResult> getProduct(ProductModel model) async {
+    ApiResult apiResult;
+    try {
+      apiResult = await network.callApi(
+          method: NetworkModel.get(
+        networkParameter: NetworkParameter(
+          url: baseUrl +
+              productPath +
+              productEndPoint +
+              "?offset=${model.offset}&limit=${model.limit}",
           header: {
             "Content-type": "application/json",
             "Accept": "application/json",
