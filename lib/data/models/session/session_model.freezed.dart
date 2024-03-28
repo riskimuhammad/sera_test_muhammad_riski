@@ -20,8 +20,11 @@ SessionModel _$SessionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SessionModel {
-  String get access_token => throw _privateConstructorUsedError;
-  String get refresh_token => throw _privateConstructorUsedError;
+  String? get access_token => throw _privateConstructorUsedError;
+  String? get refresh_token => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get role => throw _privateConstructorUsedError;
+  String? get avatar => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +38,12 @@ abstract class $SessionModelCopyWith<$Res> {
           SessionModel value, $Res Function(SessionModel) then) =
       _$SessionModelCopyWithImpl<$Res, SessionModel>;
   @useResult
-  $Res call({String access_token, String refresh_token});
+  $Res call(
+      {String? access_token,
+      String? refresh_token,
+      String? name,
+      String? role,
+      String? avatar});
 }
 
 /// @nodoc
@@ -51,18 +59,33 @@ class _$SessionModelCopyWithImpl<$Res, $Val extends SessionModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? access_token = null,
-    Object? refresh_token = null,
+    Object? access_token = freezed,
+    Object? refresh_token = freezed,
+    Object? name = freezed,
+    Object? role = freezed,
+    Object? avatar = freezed,
   }) {
     return _then(_value.copyWith(
-      access_token: null == access_token
+      access_token: freezed == access_token
           ? _value.access_token
           : access_token // ignore: cast_nullable_to_non_nullable
-              as String,
-      refresh_token: null == refresh_token
+              as String?,
+      refresh_token: freezed == refresh_token
           ? _value.refresh_token
           : refresh_token // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -75,7 +98,12 @@ abstract class _$$SessionModelImplCopyWith<$Res>
       __$$SessionModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String access_token, String refresh_token});
+  $Res call(
+      {String? access_token,
+      String? refresh_token,
+      String? name,
+      String? role,
+      String? avatar});
 }
 
 /// @nodoc
@@ -89,18 +117,33 @@ class __$$SessionModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? access_token = null,
-    Object? refresh_token = null,
+    Object? access_token = freezed,
+    Object? refresh_token = freezed,
+    Object? name = freezed,
+    Object? role = freezed,
+    Object? avatar = freezed,
   }) {
     return _then(_$SessionModelImpl(
-      access_token: null == access_token
+      access_token: freezed == access_token
           ? _value.access_token
           : access_token // ignore: cast_nullable_to_non_nullable
-              as String,
-      refresh_token: null == refresh_token
+              as String?,
+      refresh_token: freezed == refresh_token
           ? _value.refresh_token
           : refresh_token // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -109,19 +152,29 @@ class __$$SessionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SessionModelImpl implements _SessionModel {
   const _$SessionModelImpl(
-      {required this.access_token, required this.refresh_token});
+      {this.access_token,
+      this.refresh_token,
+      this.name,
+      this.role,
+      this.avatar});
 
   factory _$SessionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SessionModelImplFromJson(json);
 
   @override
-  final String access_token;
+  final String? access_token;
   @override
-  final String refresh_token;
+  final String? refresh_token;
+  @override
+  final String? name;
+  @override
+  final String? role;
+  @override
+  final String? avatar;
 
   @override
   String toString() {
-    return 'SessionModel(access_token: $access_token, refresh_token: $refresh_token)';
+    return 'SessionModel(access_token: $access_token, refresh_token: $refresh_token, name: $name, role: $role, avatar: $avatar)';
   }
 
   @override
@@ -132,12 +185,16 @@ class _$SessionModelImpl implements _SessionModel {
             (identical(other.access_token, access_token) ||
                 other.access_token == access_token) &&
             (identical(other.refresh_token, refresh_token) ||
-                other.refresh_token == refresh_token));
+                other.refresh_token == refresh_token) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.role, role) || other.role == role) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, access_token, refresh_token);
+  int get hashCode =>
+      Object.hash(runtimeType, access_token, refresh_token, name, role, avatar);
 
   @JsonKey(ignore: true)
   @override
@@ -155,16 +212,25 @@ class _$SessionModelImpl implements _SessionModel {
 
 abstract class _SessionModel implements SessionModel {
   const factory _SessionModel(
-      {required final String access_token,
-      required final String refresh_token}) = _$SessionModelImpl;
+      {final String? access_token,
+      final String? refresh_token,
+      final String? name,
+      final String? role,
+      final String? avatar}) = _$SessionModelImpl;
 
   factory _SessionModel.fromJson(Map<String, dynamic> json) =
       _$SessionModelImpl.fromJson;
 
   @override
-  String get access_token;
+  String? get access_token;
   @override
-  String get refresh_token;
+  String? get refresh_token;
+  @override
+  String? get name;
+  @override
+  String? get role;
+  @override
+  String? get avatar;
   @override
   @JsonKey(ignore: true)
   _$$SessionModelImplCopyWith<_$SessionModelImpl> get copyWith =>

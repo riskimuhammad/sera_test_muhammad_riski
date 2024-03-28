@@ -20,8 +20,9 @@ SigninModel _$SigninModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SigninModel {
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get password => throw _privateConstructorUsedError;
+  String? get token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $SigninModelCopyWith<$Res> {
           SigninModel value, $Res Function(SigninModel) then) =
       _$SigninModelCopyWithImpl<$Res, SigninModel>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({String? email, String? password, String? token});
 }
 
 /// @nodoc
@@ -51,18 +52,23 @@ class _$SigninModelCopyWithImpl<$Res, $Val extends SigninModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? token = freezed,
   }) {
     return _then(_value.copyWith(
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
+              as String?,
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -75,7 +81,7 @@ abstract class _$$SigninModelImplCopyWith<$Res>
       __$$SigninModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String password});
+  $Res call({String? email, String? password, String? token});
 }
 
 /// @nodoc
@@ -89,18 +95,23 @@ class __$$SigninModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? token = freezed,
   }) {
     return _then(_$SigninModelImpl(
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
+              as String?,
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -108,19 +119,21 @@ class __$$SigninModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SigninModelImpl implements _SigninModel {
-  const _$SigninModelImpl({required this.email, required this.password});
+  const _$SigninModelImpl({this.email, this.password, this.token});
 
   factory _$SigninModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SigninModelImplFromJson(json);
 
   @override
-  final String email;
+  final String? email;
   @override
-  final String password;
+  final String? password;
+  @override
+  final String? token;
 
   @override
   String toString() {
-    return 'SigninModel(email: $email, password: $password)';
+    return 'SigninModel(email: $email, password: $password, token: $token)';
   }
 
   @override
@@ -130,12 +143,13 @@ class _$SigninModelImpl implements _SigninModel {
             other is _$SigninModelImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.token, token) || other.token == token));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode => Object.hash(runtimeType, email, password, token);
 
   @JsonKey(ignore: true)
   @override
@@ -153,16 +167,19 @@ class _$SigninModelImpl implements _SigninModel {
 
 abstract class _SigninModel implements SigninModel {
   const factory _SigninModel(
-      {required final String email,
-      required final String password}) = _$SigninModelImpl;
+      {final String? email,
+      final String? password,
+      final String? token}) = _$SigninModelImpl;
 
   factory _SigninModel.fromJson(Map<String, dynamic> json) =
       _$SigninModelImpl.fromJson;
 
   @override
-  String get email;
+  String? get email;
   @override
-  String get password;
+  String? get password;
+  @override
+  String? get token;
   @override
   @JsonKey(ignore: true)
   _$$SigninModelImplCopyWith<_$SigninModelImpl> get copyWith =>

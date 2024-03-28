@@ -11,4 +11,7 @@ class LocalModel with _$LocalModel {
       _LocalModelInsertSession;
   const factory LocalModel.get(
       {required LocalParameter localSessionParameter}) = _LocalModelGetSession;
+  const factory LocalModel.remove(
+          {required LocalParameter localSessionParameter}) =
+      _LocalModelRemoveSession;
 }

@@ -19,6 +19,10 @@ class BoxContractImplementation extends BoxContract {
           final res = await box.read(localSessionParameter.key) ?? '';
           return jsonEncode(res);
         },
+        remove: (localSessionParameter) async {
+          await box.remove(localSessionParameter.key);
+          return 'removed';
+        },
       );
     } catch (exception, stacktrace) {
       if (kDebugMode) print(stacktrace);

@@ -6,8 +6,9 @@ part 'signin_model.g.dart';
 @freezed
 class SigninModel with _$SigninModel {
   const factory SigninModel({
-    required String email,
-    required String password,
+    String? email,
+    String? password,
+    String? token,
   }) = _SigninModel;
 
   factory SigninModel.fromJson(Map<String, dynamic> json) =>

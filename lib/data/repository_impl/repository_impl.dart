@@ -31,4 +31,25 @@ class RepositoryImplementation extends Repository {
     }
     return apiResult;
   }
+
+  Future<ApiResult> sessionAuth(SigninModel model) async {
+    ApiResult apiResult;
+    try {
+      apiResult = await network.callApi(
+          method: NetworkModel.get(
+        networkParameter: NetworkParameter(
+          url: baseUrl + authPath + profileEndPoint,
+          header: {
+            "Content-type": "application/json",
+            "Accept": "application/json",
+            "Authorization": 'Bearer ${model.token}',
+          },
+        ),
+      ));
+    } catch (e) {
+      apiResult = const ApiResult.failure(
+          networkException: NetworkException.unknownExeption());
+    }
+    return apiResult;
+  }
 }

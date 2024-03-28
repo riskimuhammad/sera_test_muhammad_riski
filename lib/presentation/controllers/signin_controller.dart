@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'dart:developer';
-
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:test_muhammad_riski/data/models/session/session_model.dart';
@@ -31,8 +29,11 @@ class SigninController extends GetxController {
     ApiResult result = await repository.signin(model);
     result.when(
       success: (data, url, headers, statusCode) async {
-        final sessionModel = SessionModel.fromJson(jsonDecode(data));
-        await localRepository.session(sessionModel);
+        signinEntity.value = signinEntityFromJson(data);
+
+        await localRepository
+            .token(SessionModel.fromJson(signinEntity.toJson()));
+
         Get.offAndToNamed(AppRoutes.product);
       },
       error: (data, url, headers, statusCode) {

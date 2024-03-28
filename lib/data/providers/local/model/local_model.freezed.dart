@@ -22,18 +22,21 @@ mixin _$LocalModel {
   TResult when<TResult extends Object?>({
     required TResult Function(LocalParameter localSessionParameter) set,
     required TResult Function(LocalParameter localSessionParameter) get,
+    required TResult Function(LocalParameter localSessionParameter) remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LocalParameter localSessionParameter)? set,
     TResult? Function(LocalParameter localSessionParameter)? get,
+    TResult? Function(LocalParameter localSessionParameter)? remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LocalParameter localSessionParameter)? set,
     TResult Function(LocalParameter localSessionParameter)? get,
+    TResult Function(LocalParameter localSessionParameter)? remove,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -41,18 +44,21 @@ mixin _$LocalModel {
   TResult map<TResult extends Object?>({
     required TResult Function(_LocalModelInsertSession value) set,
     required TResult Function(_LocalModelGetSession value) get,
+    required TResult Function(_LocalModelRemoveSession value) remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LocalModelInsertSession value)? set,
     TResult? Function(_LocalModelGetSession value)? get,
+    TResult? Function(_LocalModelRemoveSession value)? remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LocalModelInsertSession value)? set,
     TResult Function(_LocalModelGetSession value)? get,
+    TResult Function(_LocalModelRemoveSession value)? remove,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -180,6 +186,7 @@ class _$LocalModelInsertSessionImpl implements _LocalModelInsertSession {
   TResult when<TResult extends Object?>({
     required TResult Function(LocalParameter localSessionParameter) set,
     required TResult Function(LocalParameter localSessionParameter) get,
+    required TResult Function(LocalParameter localSessionParameter) remove,
   }) {
     return set(localSessionParameter);
   }
@@ -189,6 +196,7 @@ class _$LocalModelInsertSessionImpl implements _LocalModelInsertSession {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LocalParameter localSessionParameter)? set,
     TResult? Function(LocalParameter localSessionParameter)? get,
+    TResult? Function(LocalParameter localSessionParameter)? remove,
   }) {
     return set?.call(localSessionParameter);
   }
@@ -198,6 +206,7 @@ class _$LocalModelInsertSessionImpl implements _LocalModelInsertSession {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LocalParameter localSessionParameter)? set,
     TResult Function(LocalParameter localSessionParameter)? get,
+    TResult Function(LocalParameter localSessionParameter)? remove,
     required TResult orElse(),
   }) {
     if (set != null) {
@@ -211,6 +220,7 @@ class _$LocalModelInsertSessionImpl implements _LocalModelInsertSession {
   TResult map<TResult extends Object?>({
     required TResult Function(_LocalModelInsertSession value) set,
     required TResult Function(_LocalModelGetSession value) get,
+    required TResult Function(_LocalModelRemoveSession value) remove,
   }) {
     return set(this);
   }
@@ -220,6 +230,7 @@ class _$LocalModelInsertSessionImpl implements _LocalModelInsertSession {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LocalModelInsertSession value)? set,
     TResult? Function(_LocalModelGetSession value)? get,
+    TResult? Function(_LocalModelRemoveSession value)? remove,
   }) {
     return set?.call(this);
   }
@@ -229,6 +240,7 @@ class _$LocalModelInsertSessionImpl implements _LocalModelInsertSession {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LocalModelInsertSession value)? set,
     TResult Function(_LocalModelGetSession value)? get,
+    TResult Function(_LocalModelRemoveSession value)? remove,
     required TResult orElse(),
   }) {
     if (set != null) {
@@ -325,6 +337,7 @@ class _$LocalModelGetSessionImpl implements _LocalModelGetSession {
   TResult when<TResult extends Object?>({
     required TResult Function(LocalParameter localSessionParameter) set,
     required TResult Function(LocalParameter localSessionParameter) get,
+    required TResult Function(LocalParameter localSessionParameter) remove,
   }) {
     return get(localSessionParameter);
   }
@@ -334,6 +347,7 @@ class _$LocalModelGetSessionImpl implements _LocalModelGetSession {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(LocalParameter localSessionParameter)? set,
     TResult? Function(LocalParameter localSessionParameter)? get,
+    TResult? Function(LocalParameter localSessionParameter)? remove,
   }) {
     return get?.call(localSessionParameter);
   }
@@ -343,6 +357,7 @@ class _$LocalModelGetSessionImpl implements _LocalModelGetSession {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(LocalParameter localSessionParameter)? set,
     TResult Function(LocalParameter localSessionParameter)? get,
+    TResult Function(LocalParameter localSessionParameter)? remove,
     required TResult orElse(),
   }) {
     if (get != null) {
@@ -356,6 +371,7 @@ class _$LocalModelGetSessionImpl implements _LocalModelGetSession {
   TResult map<TResult extends Object?>({
     required TResult Function(_LocalModelInsertSession value) set,
     required TResult Function(_LocalModelGetSession value) get,
+    required TResult Function(_LocalModelRemoveSession value) remove,
   }) {
     return get(this);
   }
@@ -365,6 +381,7 @@ class _$LocalModelGetSessionImpl implements _LocalModelGetSession {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LocalModelInsertSession value)? set,
     TResult? Function(_LocalModelGetSession value)? get,
+    TResult? Function(_LocalModelRemoveSession value)? remove,
   }) {
     return get?.call(this);
   }
@@ -374,6 +391,7 @@ class _$LocalModelGetSessionImpl implements _LocalModelGetSession {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LocalModelInsertSession value)? set,
     TResult Function(_LocalModelGetSession value)? get,
+    TResult Function(_LocalModelRemoveSession value)? remove,
     required TResult orElse(),
   }) {
     if (get != null) {
@@ -393,5 +411,157 @@ abstract class _LocalModelGetSession implements LocalModel {
   @override
   @JsonKey(ignore: true)
   _$$LocalModelGetSessionImplCopyWith<_$LocalModelGetSessionImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LocalModelRemoveSessionImplCopyWith<$Res>
+    implements $LocalModelCopyWith<$Res> {
+  factory _$$LocalModelRemoveSessionImplCopyWith(
+          _$LocalModelRemoveSessionImpl value,
+          $Res Function(_$LocalModelRemoveSessionImpl) then) =
+      __$$LocalModelRemoveSessionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({LocalParameter localSessionParameter});
+
+  @override
+  $LocalParameterCopyWith<$Res> get localSessionParameter;
+}
+
+/// @nodoc
+class __$$LocalModelRemoveSessionImplCopyWithImpl<$Res>
+    extends _$LocalModelCopyWithImpl<$Res, _$LocalModelRemoveSessionImpl>
+    implements _$$LocalModelRemoveSessionImplCopyWith<$Res> {
+  __$$LocalModelRemoveSessionImplCopyWithImpl(
+      _$LocalModelRemoveSessionImpl _value,
+      $Res Function(_$LocalModelRemoveSessionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? localSessionParameter = null,
+  }) {
+    return _then(_$LocalModelRemoveSessionImpl(
+      localSessionParameter: null == localSessionParameter
+          ? _value.localSessionParameter
+          : localSessionParameter // ignore: cast_nullable_to_non_nullable
+              as LocalParameter,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LocalModelRemoveSessionImpl implements _LocalModelRemoveSession {
+  const _$LocalModelRemoveSessionImpl({required this.localSessionParameter});
+
+  @override
+  final LocalParameter localSessionParameter;
+
+  @override
+  String toString() {
+    return 'LocalModel.remove(localSessionParameter: $localSessionParameter)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LocalModelRemoveSessionImpl &&
+            (identical(other.localSessionParameter, localSessionParameter) ||
+                other.localSessionParameter == localSessionParameter));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, localSessionParameter);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LocalModelRemoveSessionImplCopyWith<_$LocalModelRemoveSessionImpl>
+      get copyWith => __$$LocalModelRemoveSessionImplCopyWithImpl<
+          _$LocalModelRemoveSessionImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(LocalParameter localSessionParameter) set,
+    required TResult Function(LocalParameter localSessionParameter) get,
+    required TResult Function(LocalParameter localSessionParameter) remove,
+  }) {
+    return remove(localSessionParameter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(LocalParameter localSessionParameter)? set,
+    TResult? Function(LocalParameter localSessionParameter)? get,
+    TResult? Function(LocalParameter localSessionParameter)? remove,
+  }) {
+    return remove?.call(localSessionParameter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(LocalParameter localSessionParameter)? set,
+    TResult Function(LocalParameter localSessionParameter)? get,
+    TResult Function(LocalParameter localSessionParameter)? remove,
+    required TResult orElse(),
+  }) {
+    if (remove != null) {
+      return remove(localSessionParameter);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LocalModelInsertSession value) set,
+    required TResult Function(_LocalModelGetSession value) get,
+    required TResult Function(_LocalModelRemoveSession value) remove,
+  }) {
+    return remove(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LocalModelInsertSession value)? set,
+    TResult? Function(_LocalModelGetSession value)? get,
+    TResult? Function(_LocalModelRemoveSession value)? remove,
+  }) {
+    return remove?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LocalModelInsertSession value)? set,
+    TResult Function(_LocalModelGetSession value)? get,
+    TResult Function(_LocalModelRemoveSession value)? remove,
+    required TResult orElse(),
+  }) {
+    if (remove != null) {
+      return remove(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocalModelRemoveSession implements LocalModel {
+  const factory _LocalModelRemoveSession(
+          {required final LocalParameter localSessionParameter}) =
+      _$LocalModelRemoveSessionImpl;
+
+  @override
+  LocalParameter get localSessionParameter;
+  @override
+  @JsonKey(ignore: true)
+  _$$LocalModelRemoveSessionImplCopyWith<_$LocalModelRemoveSessionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
