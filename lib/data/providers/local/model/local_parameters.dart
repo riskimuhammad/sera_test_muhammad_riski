@@ -5,7 +5,7 @@ part 'local_parameters.freezed.dart';
 @freezed
 class LocalParameter with _$LocalParameter {
   const factory LocalParameter({
-    required String value,
+    String? value,
     required String key,
   }) = _LocalParameter;
 }

@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LocalParameter {
-  String get value => throw _privateConstructorUsedError;
+  String? get value => throw _privateConstructorUsedError;
   String get key => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $LocalParameterCopyWith<$Res> {
           LocalParameter value, $Res Function(LocalParameter) then) =
       _$LocalParameterCopyWithImpl<$Res, LocalParameter>;
   @useResult
-  $Res call({String value, String key});
+  $Res call({String? value, String key});
 }
 
 /// @nodoc
@@ -46,14 +46,14 @@ class _$LocalParameterCopyWithImpl<$Res, $Val extends LocalParameter>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? value = freezed,
     Object? key = null,
   }) {
     return _then(_value.copyWith(
-      value: null == value
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       key: null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
@@ -70,7 +70,7 @@ abstract class _$$LocalParameterImplCopyWith<$Res>
       __$$LocalParameterImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String value, String key});
+  $Res call({String? value, String key});
 }
 
 /// @nodoc
@@ -84,14 +84,14 @@ class __$$LocalParameterImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? value = freezed,
     Object? key = null,
   }) {
     return _then(_$LocalParameterImpl(
-      value: null == value
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       key: null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
@@ -103,10 +103,10 @@ class __$$LocalParameterImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LocalParameterImpl implements _LocalParameter {
-  const _$LocalParameterImpl({required this.value, required this.key});
+  const _$LocalParameterImpl({this.value, required this.key});
 
   @override
-  final String value;
+  final String? value;
   @override
   final String key;
 
@@ -137,11 +137,10 @@ class _$LocalParameterImpl implements _LocalParameter {
 
 abstract class _LocalParameter implements LocalParameter {
   const factory _LocalParameter(
-      {required final String value,
-      required final String key}) = _$LocalParameterImpl;
+      {final String? value, required final String key}) = _$LocalParameterImpl;
 
   @override
-  String get value;
+  String? get value;
   @override
   String get key;
   @override

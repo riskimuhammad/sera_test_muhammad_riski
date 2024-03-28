@@ -7,6 +7,7 @@ import 'package:test_muhammad_riski/data/models/session/session_model.dart';
 import 'package:test_muhammad_riski/data/providers/network/model/api_results.dart';
 import 'package:test_muhammad_riski/domain/repository/local_repository.dart';
 import 'package:test_muhammad_riski/domain/repository/repository.dart';
+import 'package:test_muhammad_riski/presentation/routes/app_routes.dart';
 
 import '../../data/models/auth/signin_model.dart';
 import '../../domain/entity/signin_entity.dart';
@@ -29,9 +30,10 @@ class SigninController extends GetxController {
         password: passwordController.text, email: emailController.text);
     ApiResult result = await repository.signin(model);
     result.when(
-      success: (data, url, headers, statusCode) {
+      success: (data, url, headers, statusCode) async {
         final sessionModel = SessionModel.fromJson(jsonDecode(data));
-        localRepository.session(sessionModel);
+        await localRepository.session(sessionModel);
+        Get.offAndToNamed(AppRoutes.product);
       },
       error: (data, url, headers, statusCode) {
         log('E data ini adalah ${data} ${statusCode} ${url}');

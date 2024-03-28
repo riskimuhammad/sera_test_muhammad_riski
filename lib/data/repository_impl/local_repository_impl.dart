@@ -21,4 +21,17 @@ class LocalRepositoryImpl extends LocalRepository {
     }
     return localResult;
   }
+
+  @override
+  Future<LocalResult> getsession() async {
+    LocalResult localResult;
+    try {
+      localResult = await box.callBox(
+          method: LocalModel.get(
+              localSessionParameter: LocalParameter(key: 'session')));
+    } catch (e) {
+      localResult = const LocalResult.failure(data: 'error tidak di ketahui');
+    }
+    return localResult;
+  }
 }

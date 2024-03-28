@@ -16,7 +16,7 @@ class BoxContractImplementation extends BoxContract {
           return 'done';
         },
         get: (localSessionParameter) async {
-          final res = await box.read(localSessionParameter.key);
+          final res = await box.read(localSessionParameter.key) ?? '';
           return jsonEncode(res);
         },
       );
