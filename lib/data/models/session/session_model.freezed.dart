@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'local_session_parameters.dart';
+part of 'session_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,30 +14,34 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+SessionModel _$SessionModelFromJson(Map<String, dynamic> json) {
+  return _SessionModel.fromJson(json);
+}
+
 /// @nodoc
-mixin _$LocalSessionParameter {
+mixin _$SessionModel {
   String get access_token => throw _privateConstructorUsedError;
   String get refresh_token => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LocalSessionParameterCopyWith<LocalSessionParameter> get copyWith =>
+  $SessionModelCopyWith<SessionModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LocalSessionParameterCopyWith<$Res> {
-  factory $LocalSessionParameterCopyWith(LocalSessionParameter value,
-          $Res Function(LocalSessionParameter) then) =
-      _$LocalSessionParameterCopyWithImpl<$Res, LocalSessionParameter>;
+abstract class $SessionModelCopyWith<$Res> {
+  factory $SessionModelCopyWith(
+          SessionModel value, $Res Function(SessionModel) then) =
+      _$SessionModelCopyWithImpl<$Res, SessionModel>;
   @useResult
   $Res call({String access_token, String refresh_token});
 }
 
 /// @nodoc
-class _$LocalSessionParameterCopyWithImpl<$Res,
-        $Val extends LocalSessionParameter>
-    implements $LocalSessionParameterCopyWith<$Res> {
-  _$LocalSessionParameterCopyWithImpl(this._value, this._then);
+class _$SessionModelCopyWithImpl<$Res, $Val extends SessionModel>
+    implements $SessionModelCopyWith<$Res> {
+  _$SessionModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -64,24 +68,22 @@ class _$LocalSessionParameterCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$LocalSessionParameterImplCopyWith<$Res>
-    implements $LocalSessionParameterCopyWith<$Res> {
-  factory _$$LocalSessionParameterImplCopyWith(
-          _$LocalSessionParameterImpl value,
-          $Res Function(_$LocalSessionParameterImpl) then) =
-      __$$LocalSessionParameterImplCopyWithImpl<$Res>;
+abstract class _$$SessionModelImplCopyWith<$Res>
+    implements $SessionModelCopyWith<$Res> {
+  factory _$$SessionModelImplCopyWith(
+          _$SessionModelImpl value, $Res Function(_$SessionModelImpl) then) =
+      __$$SessionModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String access_token, String refresh_token});
 }
 
 /// @nodoc
-class __$$LocalSessionParameterImplCopyWithImpl<$Res>
-    extends _$LocalSessionParameterCopyWithImpl<$Res,
-        _$LocalSessionParameterImpl>
-    implements _$$LocalSessionParameterImplCopyWith<$Res> {
-  __$$LocalSessionParameterImplCopyWithImpl(_$LocalSessionParameterImpl _value,
-      $Res Function(_$LocalSessionParameterImpl) _then)
+class __$$SessionModelImplCopyWithImpl<$Res>
+    extends _$SessionModelCopyWithImpl<$Res, _$SessionModelImpl>
+    implements _$$SessionModelImplCopyWith<$Res> {
+  __$$SessionModelImplCopyWithImpl(
+      _$SessionModelImpl _value, $Res Function(_$SessionModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,7 +92,7 @@ class __$$LocalSessionParameterImplCopyWithImpl<$Res>
     Object? access_token = null,
     Object? refresh_token = null,
   }) {
-    return _then(_$LocalSessionParameterImpl(
+    return _then(_$SessionModelImpl(
       access_token: null == access_token
           ? _value.access_token
           : access_token // ignore: cast_nullable_to_non_nullable
@@ -104,10 +106,13 @@ class __$$LocalSessionParameterImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-class _$LocalSessionParameterImpl implements _LocalSessionParameter {
-  const _$LocalSessionParameterImpl(
+@JsonSerializable()
+class _$SessionModelImpl implements _SessionModel {
+  const _$SessionModelImpl(
       {required this.access_token, required this.refresh_token});
+
+  factory _$SessionModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SessionModelImplFromJson(json);
 
   @override
   final String access_token;
@@ -116,35 +121,45 @@ class _$LocalSessionParameterImpl implements _LocalSessionParameter {
 
   @override
   String toString() {
-    return 'LocalSessionParameter(access_token: $access_token, refresh_token: $refresh_token)';
+    return 'SessionModel(access_token: $access_token, refresh_token: $refresh_token)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalSessionParameterImpl &&
+            other is _$SessionModelImpl &&
             (identical(other.access_token, access_token) ||
                 other.access_token == access_token) &&
             (identical(other.refresh_token, refresh_token) ||
                 other.refresh_token == refresh_token));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, access_token, refresh_token);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalSessionParameterImplCopyWith<_$LocalSessionParameterImpl>
-      get copyWith => __$$LocalSessionParameterImplCopyWithImpl<
-          _$LocalSessionParameterImpl>(this, _$identity);
+  _$$SessionModelImplCopyWith<_$SessionModelImpl> get copyWith =>
+      __$$SessionModelImplCopyWithImpl<_$SessionModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SessionModelImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _LocalSessionParameter implements LocalSessionParameter {
-  const factory _LocalSessionParameter(
+abstract class _SessionModel implements SessionModel {
+  const factory _SessionModel(
       {required final String access_token,
-      required final String refresh_token}) = _$LocalSessionParameterImpl;
+      required final String refresh_token}) = _$SessionModelImpl;
+
+  factory _SessionModel.fromJson(Map<String, dynamic> json) =
+      _$SessionModelImpl.fromJson;
 
   @override
   String get access_token;
@@ -152,6 +167,6 @@ abstract class _LocalSessionParameter implements LocalSessionParameter {
   String get refresh_token;
   @override
   @JsonKey(ignore: true)
-  _$$LocalSessionParameterImplCopyWith<_$LocalSessionParameterImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$SessionModelImplCopyWith<_$SessionModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

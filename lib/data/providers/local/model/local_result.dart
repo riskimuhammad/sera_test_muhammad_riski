@@ -6,5 +6,8 @@ part 'local_result.freezed.dart';
 class LocalResult with _$LocalResult {
   const factory LocalResult.success({
     required String data,
-  }) = _LocalModelPost;
+  }) = _LocalModelSuccess;
+  const factory LocalResult.failure({
+    required String data,
+  }) = _LocalModelFailure;
 }

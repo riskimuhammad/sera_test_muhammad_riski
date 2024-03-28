@@ -1,11 +1,12 @@
 import 'package:test_muhammad_riski/core/constants/string_constants.dart';
-import 'package:test_muhammad_riski/data/models/signin_model.dart';
 import 'package:test_muhammad_riski/data/providers/network/contract.dart';
 import 'package:test_muhammad_riski/data/providers/network/model/api_results.dart';
 import 'package:test_muhammad_riski/data/providers/network/model/network_exception.dart';
 import 'package:test_muhammad_riski/data/providers/network/model/network_model.dart';
 import 'package:test_muhammad_riski/data/providers/network/model/network_parameters.dart';
 import 'package:test_muhammad_riski/domain/repository/repository.dart';
+
+import '../models/auth/signin_model.dart';
 
 class RepositoryImplementation extends Repository {
   final Network network;

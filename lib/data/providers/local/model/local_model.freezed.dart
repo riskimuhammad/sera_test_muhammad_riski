@@ -16,47 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LocalModel {
-  LocalSessionParameter get localSessionParameter =>
+  LocalParameter get localSessionParameter =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LocalSessionParameter localSessionParameter)
-        insertSession,
-    required TResult Function(LocalSessionParameter localSessionParameter)
-        getSession,
+    required TResult Function(LocalParameter localSessionParameter) set,
+    required TResult Function(LocalParameter localSessionParameter) get,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LocalSessionParameter localSessionParameter)?
-        insertSession,
-    TResult? Function(LocalSessionParameter localSessionParameter)? getSession,
+    TResult? Function(LocalParameter localSessionParameter)? set,
+    TResult? Function(LocalParameter localSessionParameter)? get,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LocalSessionParameter localSessionParameter)?
-        insertSession,
-    TResult Function(LocalSessionParameter localSessionParameter)? getSession,
+    TResult Function(LocalParameter localSessionParameter)? set,
+    TResult Function(LocalParameter localSessionParameter)? get,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LocalModelInsertSession value) insertSession,
-    required TResult Function(_LocalModelGetSession value) getSession,
+    required TResult Function(_LocalModelInsertSession value) set,
+    required TResult Function(_LocalModelGetSession value) get,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LocalModelInsertSession value)? insertSession,
-    TResult? Function(_LocalModelGetSession value)? getSession,
+    TResult? Function(_LocalModelInsertSession value)? set,
+    TResult? Function(_LocalModelGetSession value)? get,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LocalModelInsertSession value)? insertSession,
-    TResult Function(_LocalModelGetSession value)? getSession,
+    TResult Function(_LocalModelInsertSession value)? set,
+    TResult Function(_LocalModelGetSession value)? get,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,9 +68,9 @@ abstract class $LocalModelCopyWith<$Res> {
           LocalModel value, $Res Function(LocalModel) then) =
       _$LocalModelCopyWithImpl<$Res, LocalModel>;
   @useResult
-  $Res call({LocalSessionParameter localSessionParameter});
+  $Res call({LocalParameter localSessionParameter});
 
-  $LocalSessionParameterCopyWith<$Res> get localSessionParameter;
+  $LocalParameterCopyWith<$Res> get localSessionParameter;
 }
 
 /// @nodoc
@@ -96,15 +92,14 @@ class _$LocalModelCopyWithImpl<$Res, $Val extends LocalModel>
       localSessionParameter: null == localSessionParameter
           ? _value.localSessionParameter
           : localSessionParameter // ignore: cast_nullable_to_non_nullable
-              as LocalSessionParameter,
+              as LocalParameter,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $LocalSessionParameterCopyWith<$Res> get localSessionParameter {
-    return $LocalSessionParameterCopyWith<$Res>(_value.localSessionParameter,
-        (value) {
+  $LocalParameterCopyWith<$Res> get localSessionParameter {
+    return $LocalParameterCopyWith<$Res>(_value.localSessionParameter, (value) {
       return _then(_value.copyWith(localSessionParameter: value) as $Val);
     });
   }
@@ -119,10 +114,10 @@ abstract class _$$LocalModelInsertSessionImplCopyWith<$Res>
       __$$LocalModelInsertSessionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LocalSessionParameter localSessionParameter});
+  $Res call({LocalParameter localSessionParameter});
 
   @override
-  $LocalSessionParameterCopyWith<$Res> get localSessionParameter;
+  $LocalParameterCopyWith<$Res> get localSessionParameter;
 }
 
 /// @nodoc
@@ -143,7 +138,7 @@ class __$$LocalModelInsertSessionImplCopyWithImpl<$Res>
       localSessionParameter: null == localSessionParameter
           ? _value.localSessionParameter
           : localSessionParameter // ignore: cast_nullable_to_non_nullable
-              as LocalSessionParameter,
+              as LocalParameter,
     ));
   }
 }
@@ -154,11 +149,11 @@ class _$LocalModelInsertSessionImpl implements _LocalModelInsertSession {
   const _$LocalModelInsertSessionImpl({required this.localSessionParameter});
 
   @override
-  final LocalSessionParameter localSessionParameter;
+  final LocalParameter localSessionParameter;
 
   @override
   String toString() {
-    return 'LocalModel.insertSession(localSessionParameter: $localSessionParameter)';
+    return 'LocalModel.set(localSessionParameter: $localSessionParameter)';
   }
 
   @override
@@ -183,34 +178,30 @@ class _$LocalModelInsertSessionImpl implements _LocalModelInsertSession {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LocalSessionParameter localSessionParameter)
-        insertSession,
-    required TResult Function(LocalSessionParameter localSessionParameter)
-        getSession,
+    required TResult Function(LocalParameter localSessionParameter) set,
+    required TResult Function(LocalParameter localSessionParameter) get,
   }) {
-    return insertSession(localSessionParameter);
+    return set(localSessionParameter);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LocalSessionParameter localSessionParameter)?
-        insertSession,
-    TResult? Function(LocalSessionParameter localSessionParameter)? getSession,
+    TResult? Function(LocalParameter localSessionParameter)? set,
+    TResult? Function(LocalParameter localSessionParameter)? get,
   }) {
-    return insertSession?.call(localSessionParameter);
+    return set?.call(localSessionParameter);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LocalSessionParameter localSessionParameter)?
-        insertSession,
-    TResult Function(LocalSessionParameter localSessionParameter)? getSession,
+    TResult Function(LocalParameter localSessionParameter)? set,
+    TResult Function(LocalParameter localSessionParameter)? get,
     required TResult orElse(),
   }) {
-    if (insertSession != null) {
-      return insertSession(localSessionParameter);
+    if (set != null) {
+      return set(localSessionParameter);
     }
     return orElse();
   }
@@ -218,30 +209,30 @@ class _$LocalModelInsertSessionImpl implements _LocalModelInsertSession {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LocalModelInsertSession value) insertSession,
-    required TResult Function(_LocalModelGetSession value) getSession,
+    required TResult Function(_LocalModelInsertSession value) set,
+    required TResult Function(_LocalModelGetSession value) get,
   }) {
-    return insertSession(this);
+    return set(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LocalModelInsertSession value)? insertSession,
-    TResult? Function(_LocalModelGetSession value)? getSession,
+    TResult? Function(_LocalModelInsertSession value)? set,
+    TResult? Function(_LocalModelGetSession value)? get,
   }) {
-    return insertSession?.call(this);
+    return set?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LocalModelInsertSession value)? insertSession,
-    TResult Function(_LocalModelGetSession value)? getSession,
+    TResult Function(_LocalModelInsertSession value)? set,
+    TResult Function(_LocalModelGetSession value)? get,
     required TResult orElse(),
   }) {
-    if (insertSession != null) {
-      return insertSession(this);
+    if (set != null) {
+      return set(this);
     }
     return orElse();
   }
@@ -249,11 +240,11 @@ class _$LocalModelInsertSessionImpl implements _LocalModelInsertSession {
 
 abstract class _LocalModelInsertSession implements LocalModel {
   const factory _LocalModelInsertSession(
-          {required final LocalSessionParameter localSessionParameter}) =
+          {required final LocalParameter localSessionParameter}) =
       _$LocalModelInsertSessionImpl;
 
   @override
-  LocalSessionParameter get localSessionParameter;
+  LocalParameter get localSessionParameter;
   @override
   @JsonKey(ignore: true)
   _$$LocalModelInsertSessionImplCopyWith<_$LocalModelInsertSessionImpl>
@@ -268,10 +259,10 @@ abstract class _$$LocalModelGetSessionImplCopyWith<$Res>
       __$$LocalModelGetSessionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({LocalSessionParameter localSessionParameter});
+  $Res call({LocalParameter localSessionParameter});
 
   @override
-  $LocalSessionParameterCopyWith<$Res> get localSessionParameter;
+  $LocalParameterCopyWith<$Res> get localSessionParameter;
 }
 
 /// @nodoc
@@ -291,7 +282,7 @@ class __$$LocalModelGetSessionImplCopyWithImpl<$Res>
       localSessionParameter: null == localSessionParameter
           ? _value.localSessionParameter
           : localSessionParameter // ignore: cast_nullable_to_non_nullable
-              as LocalSessionParameter,
+              as LocalParameter,
     ));
   }
 }
@@ -302,11 +293,11 @@ class _$LocalModelGetSessionImpl implements _LocalModelGetSession {
   const _$LocalModelGetSessionImpl({required this.localSessionParameter});
 
   @override
-  final LocalSessionParameter localSessionParameter;
+  final LocalParameter localSessionParameter;
 
   @override
   String toString() {
-    return 'LocalModel.getSession(localSessionParameter: $localSessionParameter)';
+    return 'LocalModel.get(localSessionParameter: $localSessionParameter)';
   }
 
   @override
@@ -332,34 +323,30 @@ class _$LocalModelGetSessionImpl implements _LocalModelGetSession {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(LocalSessionParameter localSessionParameter)
-        insertSession,
-    required TResult Function(LocalSessionParameter localSessionParameter)
-        getSession,
+    required TResult Function(LocalParameter localSessionParameter) set,
+    required TResult Function(LocalParameter localSessionParameter) get,
   }) {
-    return getSession(localSessionParameter);
+    return get(localSessionParameter);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(LocalSessionParameter localSessionParameter)?
-        insertSession,
-    TResult? Function(LocalSessionParameter localSessionParameter)? getSession,
+    TResult? Function(LocalParameter localSessionParameter)? set,
+    TResult? Function(LocalParameter localSessionParameter)? get,
   }) {
-    return getSession?.call(localSessionParameter);
+    return get?.call(localSessionParameter);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(LocalSessionParameter localSessionParameter)?
-        insertSession,
-    TResult Function(LocalSessionParameter localSessionParameter)? getSession,
+    TResult Function(LocalParameter localSessionParameter)? set,
+    TResult Function(LocalParameter localSessionParameter)? get,
     required TResult orElse(),
   }) {
-    if (getSession != null) {
-      return getSession(localSessionParameter);
+    if (get != null) {
+      return get(localSessionParameter);
     }
     return orElse();
   }
@@ -367,30 +354,30 @@ class _$LocalModelGetSessionImpl implements _LocalModelGetSession {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LocalModelInsertSession value) insertSession,
-    required TResult Function(_LocalModelGetSession value) getSession,
+    required TResult Function(_LocalModelInsertSession value) set,
+    required TResult Function(_LocalModelGetSession value) get,
   }) {
-    return getSession(this);
+    return get(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LocalModelInsertSession value)? insertSession,
-    TResult? Function(_LocalModelGetSession value)? getSession,
+    TResult? Function(_LocalModelInsertSession value)? set,
+    TResult? Function(_LocalModelGetSession value)? get,
   }) {
-    return getSession?.call(this);
+    return get?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LocalModelInsertSession value)? insertSession,
-    TResult Function(_LocalModelGetSession value)? getSession,
+    TResult Function(_LocalModelInsertSession value)? set,
+    TResult Function(_LocalModelGetSession value)? get,
     required TResult orElse(),
   }) {
-    if (getSession != null) {
-      return getSession(this);
+    if (get != null) {
+      return get(this);
     }
     return orElse();
   }
@@ -398,11 +385,11 @@ class _$LocalModelGetSessionImpl implements _LocalModelGetSession {
 
 abstract class _LocalModelGetSession implements LocalModel {
   const factory _LocalModelGetSession(
-          {required final LocalSessionParameter localSessionParameter}) =
+          {required final LocalParameter localSessionParameter}) =
       _$LocalModelGetSessionImpl;
 
   @override
-  LocalSessionParameter get localSessionParameter;
+  LocalParameter get localSessionParameter;
   @override
   @JsonKey(ignore: true)
   _$$LocalModelGetSessionImplCopyWith<_$LocalModelGetSessionImpl>

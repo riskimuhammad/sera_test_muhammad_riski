@@ -20,32 +20,38 @@ mixin _$LocalResult {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String data) success,
+    required TResult Function(String data) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String data)? success,
+    TResult? Function(String data)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String data)? success,
+    TResult Function(String data)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LocalModelPost value) success,
+    required TResult Function(_LocalModelSuccess value) success,
+    required TResult Function(_LocalModelFailure value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LocalModelPost value)? success,
+    TResult? Function(_LocalModelSuccess value)? success,
+    TResult? Function(_LocalModelFailure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LocalModelPost value)? success,
+    TResult Function(_LocalModelSuccess value)? success,
+    TResult Function(_LocalModelFailure value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -89,22 +95,22 @@ class _$LocalResultCopyWithImpl<$Res, $Val extends LocalResult>
 }
 
 /// @nodoc
-abstract class _$$LocalModelPostImplCopyWith<$Res>
+abstract class _$$LocalModelSuccessImplCopyWith<$Res>
     implements $LocalResultCopyWith<$Res> {
-  factory _$$LocalModelPostImplCopyWith(_$LocalModelPostImpl value,
-          $Res Function(_$LocalModelPostImpl) then) =
-      __$$LocalModelPostImplCopyWithImpl<$Res>;
+  factory _$$LocalModelSuccessImplCopyWith(_$LocalModelSuccessImpl value,
+          $Res Function(_$LocalModelSuccessImpl) then) =
+      __$$LocalModelSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String data});
 }
 
 /// @nodoc
-class __$$LocalModelPostImplCopyWithImpl<$Res>
-    extends _$LocalResultCopyWithImpl<$Res, _$LocalModelPostImpl>
-    implements _$$LocalModelPostImplCopyWith<$Res> {
-  __$$LocalModelPostImplCopyWithImpl(
-      _$LocalModelPostImpl _value, $Res Function(_$LocalModelPostImpl) _then)
+class __$$LocalModelSuccessImplCopyWithImpl<$Res>
+    extends _$LocalResultCopyWithImpl<$Res, _$LocalModelSuccessImpl>
+    implements _$$LocalModelSuccessImplCopyWith<$Res> {
+  __$$LocalModelSuccessImplCopyWithImpl(_$LocalModelSuccessImpl _value,
+      $Res Function(_$LocalModelSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +118,7 @@ class __$$LocalModelPostImplCopyWithImpl<$Res>
   $Res call({
     Object? data = null,
   }) {
-    return _then(_$LocalModelPostImpl(
+    return _then(_$LocalModelSuccessImpl(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -123,8 +129,8 @@ class __$$LocalModelPostImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocalModelPostImpl implements _LocalModelPost {
-  const _$LocalModelPostImpl({required this.data});
+class _$LocalModelSuccessImpl implements _LocalModelSuccess {
+  const _$LocalModelSuccessImpl({required this.data});
 
   @override
   final String data;
@@ -138,7 +144,7 @@ class _$LocalModelPostImpl implements _LocalModelPost {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalModelPostImpl &&
+            other is _$LocalModelSuccessImpl &&
             (identical(other.data, data) || other.data == data));
   }
 
@@ -148,14 +154,15 @@ class _$LocalModelPostImpl implements _LocalModelPost {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalModelPostImplCopyWith<_$LocalModelPostImpl> get copyWith =>
-      __$$LocalModelPostImplCopyWithImpl<_$LocalModelPostImpl>(
+  _$$LocalModelSuccessImplCopyWith<_$LocalModelSuccessImpl> get copyWith =>
+      __$$LocalModelSuccessImplCopyWithImpl<_$LocalModelSuccessImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String data) success,
+    required TResult Function(String data) failure,
   }) {
     return success(data);
   }
@@ -164,6 +171,7 @@ class _$LocalModelPostImpl implements _LocalModelPost {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String data)? success,
+    TResult? Function(String data)? failure,
   }) {
     return success?.call(data);
   }
@@ -172,6 +180,7 @@ class _$LocalModelPostImpl implements _LocalModelPost {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String data)? success,
+    TResult Function(String data)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -183,7 +192,8 @@ class _$LocalModelPostImpl implements _LocalModelPost {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LocalModelPost value) success,
+    required TResult Function(_LocalModelSuccess value) success,
+    required TResult Function(_LocalModelFailure value) failure,
   }) {
     return success(this);
   }
@@ -191,7 +201,8 @@ class _$LocalModelPostImpl implements _LocalModelPost {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_LocalModelPost value)? success,
+    TResult? Function(_LocalModelSuccess value)? success,
+    TResult? Function(_LocalModelFailure value)? failure,
   }) {
     return success?.call(this);
   }
@@ -199,7 +210,8 @@ class _$LocalModelPostImpl implements _LocalModelPost {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LocalModelPost value)? success,
+    TResult Function(_LocalModelSuccess value)? success,
+    TResult Function(_LocalModelFailure value)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -209,14 +221,153 @@ class _$LocalModelPostImpl implements _LocalModelPost {
   }
 }
 
-abstract class _LocalModelPost implements LocalResult {
-  const factory _LocalModelPost({required final String data}) =
-      _$LocalModelPostImpl;
+abstract class _LocalModelSuccess implements LocalResult {
+  const factory _LocalModelSuccess({required final String data}) =
+      _$LocalModelSuccessImpl;
 
   @override
   String get data;
   @override
   @JsonKey(ignore: true)
-  _$$LocalModelPostImplCopyWith<_$LocalModelPostImpl> get copyWith =>
+  _$$LocalModelSuccessImplCopyWith<_$LocalModelSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LocalModelFailureImplCopyWith<$Res>
+    implements $LocalResultCopyWith<$Res> {
+  factory _$$LocalModelFailureImplCopyWith(_$LocalModelFailureImpl value,
+          $Res Function(_$LocalModelFailureImpl) then) =
+      __$$LocalModelFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String data});
+}
+
+/// @nodoc
+class __$$LocalModelFailureImplCopyWithImpl<$Res>
+    extends _$LocalResultCopyWithImpl<$Res, _$LocalModelFailureImpl>
+    implements _$$LocalModelFailureImplCopyWith<$Res> {
+  __$$LocalModelFailureImplCopyWithImpl(_$LocalModelFailureImpl _value,
+      $Res Function(_$LocalModelFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$LocalModelFailureImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LocalModelFailureImpl implements _LocalModelFailure {
+  const _$LocalModelFailureImpl({required this.data});
+
+  @override
+  final String data;
+
+  @override
+  String toString() {
+    return 'LocalResult.failure(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LocalModelFailureImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LocalModelFailureImplCopyWith<_$LocalModelFailureImpl> get copyWith =>
+      __$$LocalModelFailureImplCopyWithImpl<_$LocalModelFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String data) success,
+    required TResult Function(String data) failure,
+  }) {
+    return failure(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String data)? success,
+    TResult? Function(String data)? failure,
+  }) {
+    return failure?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String data)? success,
+    TResult Function(String data)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LocalModelSuccess value) success,
+    required TResult Function(_LocalModelFailure value) failure,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LocalModelSuccess value)? success,
+    TResult? Function(_LocalModelFailure value)? failure,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LocalModelSuccess value)? success,
+    TResult Function(_LocalModelFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocalModelFailure implements LocalResult {
+  const factory _LocalModelFailure({required final String data}) =
+      _$LocalModelFailureImpl;
+
+  @override
+  String get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$LocalModelFailureImplCopyWith<_$LocalModelFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

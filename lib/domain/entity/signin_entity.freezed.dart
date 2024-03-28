@@ -20,8 +20,8 @@ SigninEntity _$SigninEntityFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SigninEntity {
-  String get access_token => throw _privateConstructorUsedError;
-  String get refresh_token => throw _privateConstructorUsedError;
+  String? get access_token => throw _privateConstructorUsedError;
+  String? get refresh_token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $SigninEntityCopyWith<$Res> {
           SigninEntity value, $Res Function(SigninEntity) then) =
       _$SigninEntityCopyWithImpl<$Res, SigninEntity>;
   @useResult
-  $Res call({String access_token, String refresh_token});
+  $Res call({String? access_token, String? refresh_token});
 }
 
 /// @nodoc
@@ -51,18 +51,18 @@ class _$SigninEntityCopyWithImpl<$Res, $Val extends SigninEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? access_token = null,
-    Object? refresh_token = null,
+    Object? access_token = freezed,
+    Object? refresh_token = freezed,
   }) {
     return _then(_value.copyWith(
-      access_token: null == access_token
+      access_token: freezed == access_token
           ? _value.access_token
           : access_token // ignore: cast_nullable_to_non_nullable
-              as String,
-      refresh_token: null == refresh_token
+              as String?,
+      refresh_token: freezed == refresh_token
           ? _value.refresh_token
           : refresh_token // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$SigninEntityImplCopyWith<$Res>
       __$$SigninEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String access_token, String refresh_token});
+  $Res call({String? access_token, String? refresh_token});
 }
 
 /// @nodoc
@@ -89,18 +89,18 @@ class __$$SigninEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? access_token = null,
-    Object? refresh_token = null,
+    Object? access_token = freezed,
+    Object? refresh_token = freezed,
   }) {
     return _then(_$SigninEntityImpl(
-      access_token: null == access_token
+      access_token: freezed == access_token
           ? _value.access_token
           : access_token // ignore: cast_nullable_to_non_nullable
-              as String,
-      refresh_token: null == refresh_token
+              as String?,
+      refresh_token: freezed == refresh_token
           ? _value.refresh_token
           : refresh_token // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -108,16 +108,15 @@ class __$$SigninEntityImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SigninEntityImpl implements _SigninEntity {
-  const _$SigninEntityImpl(
-      {required this.access_token, required this.refresh_token});
+  const _$SigninEntityImpl({this.access_token, this.refresh_token});
 
   factory _$SigninEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$SigninEntityImplFromJson(json);
 
   @override
-  final String access_token;
+  final String? access_token;
   @override
-  final String refresh_token;
+  final String? refresh_token;
 
   @override
   String toString() {
@@ -155,16 +154,16 @@ class _$SigninEntityImpl implements _SigninEntity {
 
 abstract class _SigninEntity implements SigninEntity {
   const factory _SigninEntity(
-      {required final String access_token,
-      required final String refresh_token}) = _$SigninEntityImpl;
+      {final String? access_token,
+      final String? refresh_token}) = _$SigninEntityImpl;
 
   factory _SigninEntity.fromJson(Map<String, dynamic> json) =
       _$SigninEntityImpl.fromJson;
 
   @override
-  String get access_token;
+  String? get access_token;
   @override
-  String get refresh_token;
+  String? get refresh_token;
   @override
   @JsonKey(ignore: true)
   _$$SigninEntityImplCopyWith<_$SigninEntityImpl> get copyWith =>

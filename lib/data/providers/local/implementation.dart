@@ -10,7 +10,7 @@ class BoxImplementation extends Box {
   @override
   Future<LocalResult> callBox({required LocalModel method}) async {
     try {
-      final res = await boxContract.sessionBox(method: method);
+      final res = await boxContract.box(method: method);
       return LocalResult.success(data: res);
     } catch (exception) {
       return boxContract.unknownException;
