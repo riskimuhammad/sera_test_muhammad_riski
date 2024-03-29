@@ -38,7 +38,9 @@ class DetailProductScreen extends StatelessWidget {
               return _detailValue(context);
             }
           }),
-          _buttonAddCart(),
+          Obx(
+            () => _buttonAddCart(),
+          )
         ],
       ),
     );
@@ -255,11 +257,16 @@ class DetailProductScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10))),
                     backgroundColor: MaterialStateProperty.all(
                         MColors.primaryColorsPrimary)),
-                onPressed: () {},
-                child: Text(
-                  'Add to Chart',
-                  style: MTextStyle.textStyleNormalCWhite,
-                )),
+                onPressed: () => controller.addCart(),
+                child: controller.addCartLoading.isTrue
+                    ? Icon(
+                        Icons.check_circle,
+                        color: MColors.white,
+                      )
+                    : Text(
+                        'Add to Chart',
+                        style: MTextStyle.textStyleNormalCWhite,
+                      )),
           ),
         ));
   }

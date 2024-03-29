@@ -31,6 +31,7 @@ mixin _$ProductEntity {
   Map<String, dynamic>? get rating =>
       throw _privateConstructorUsedError; // Map<String, dynamic>? category,
   String? get category => throw _privateConstructorUsedError;
+  int? get quantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +54,8 @@ abstract class $ProductEntityCopyWith<$Res> {
       String? creationAt,
       String? updatedAt,
       Map<String, dynamic>? rating,
-      String? category});
+      String? category,
+      int? quantity});
 }
 
 /// @nodoc
@@ -78,6 +80,7 @@ class _$ProductEntityCopyWithImpl<$Res, $Val extends ProductEntity>
     Object? updatedAt = freezed,
     Object? rating = freezed,
     Object? category = freezed,
+    Object? quantity = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -116,6 +119,10 @@ class _$ProductEntityCopyWithImpl<$Res, $Val extends ProductEntity>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      quantity: freezed == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -137,7 +144,8 @@ abstract class _$$ProductEntityImplCopyWith<$Res>
       String? creationAt,
       String? updatedAt,
       Map<String, dynamic>? rating,
-      String? category});
+      String? category,
+      int? quantity});
 }
 
 /// @nodoc
@@ -160,6 +168,7 @@ class __$$ProductEntityImplCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? rating = freezed,
     Object? category = freezed,
+    Object? quantity = freezed,
   }) {
     return _then(_$ProductEntityImpl(
       id: freezed == id
@@ -198,6 +207,10 @@ class __$$ProductEntityImplCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      quantity: freezed == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -214,7 +227,8 @@ class _$ProductEntityImpl implements _ProductEntity {
       this.creationAt,
       this.updatedAt,
       final Map<String, dynamic>? rating,
-      this.category})
+      this.category,
+      this.quantity})
       : _rating = rating;
 
   factory _$ProductEntityImpl.fromJson(Map<String, dynamic> json) =>
@@ -249,10 +263,12 @@ class _$ProductEntityImpl implements _ProductEntity {
 // Map<String, dynamic>? category,
   @override
   final String? category;
+  @override
+  final int? quantity;
 
   @override
   String toString() {
-    return 'ProductEntity(id: $id, title: $title, price: $price, description: $description, image: $image, creationAt: $creationAt, updatedAt: $updatedAt, rating: $rating, category: $category)';
+    return 'ProductEntity(id: $id, title: $title, price: $price, description: $description, image: $image, creationAt: $creationAt, updatedAt: $updatedAt, rating: $rating, category: $category, quantity: $quantity)';
   }
 
   @override
@@ -272,7 +288,9 @@ class _$ProductEntityImpl implements _ProductEntity {
                 other.updatedAt == updatedAt) &&
             const DeepCollectionEquality().equals(other._rating, _rating) &&
             (identical(other.category, category) ||
-                other.category == category));
+                other.category == category) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
   }
 
   @JsonKey(ignore: true)
@@ -287,7 +305,8 @@ class _$ProductEntityImpl implements _ProductEntity {
       creationAt,
       updatedAt,
       const DeepCollectionEquality().hash(_rating),
-      category);
+      category,
+      quantity);
 
   @JsonKey(ignore: true)
   @override
@@ -313,7 +332,8 @@ abstract class _ProductEntity implements ProductEntity {
       final String? creationAt,
       final String? updatedAt,
       final Map<String, dynamic>? rating,
-      final String? category}) = _$ProductEntityImpl;
+      final String? category,
+      final int? quantity}) = _$ProductEntityImpl;
 
   factory _ProductEntity.fromJson(Map<String, dynamic> json) =
       _$ProductEntityImpl.fromJson;
@@ -336,6 +356,8 @@ abstract class _ProductEntity implements ProductEntity {
   Map<String, dynamic>? get rating;
   @override // Map<String, dynamic>? category,
   String? get category;
+  @override
+  int? get quantity;
   @override
   @JsonKey(ignore: true)
   _$$ProductEntityImplCopyWith<_$ProductEntityImpl> get copyWith =>

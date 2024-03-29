@@ -8,3 +8,4 @@ String profileEndPoint = 'profile';
 String categoryEndPoint = '/categories';
 String categoryByNameEndPoint = '/category';
 String productEndPoint = 'products';
+String cartsEndpoint = 'carts';

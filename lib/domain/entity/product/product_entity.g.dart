@@ -17,6 +17,7 @@ _$ProductEntityImpl _$$ProductEntityImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updatedAt'] as String?,
       rating: json['rating'] as Map<String, dynamic>?,
       category: json['category'] as String?,
+      quantity: json['quantity'] as int?,
     );
 
 Map<String, dynamic> _$$ProductEntityImplToJson(_$ProductEntityImpl instance) =>
@@ -30,4 +31,5 @@ Map<String, dynamic> _$$ProductEntityImplToJson(_$ProductEntityImpl instance) =>
       'updatedAt': instance.updatedAt,
       'rating': instance.rating,
       'category': instance.category,
+      'quantity': instance.quantity,
     };

@@ -24,6 +24,7 @@ class ProductEntity with _$ProductEntity {
     Map<String, dynamic>? rating,
     // Map<String, dynamic>? category,
     String? category,
+    int? quantity,
   }) = _ProductEntity;
 
   factory ProductEntity.fromJson(Map<String, dynamic> json) =>

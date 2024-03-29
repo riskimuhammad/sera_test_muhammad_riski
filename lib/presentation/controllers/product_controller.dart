@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:test_muhammad_riski/data/models/auth/signin_model.dart';
+import 'package:test_muhammad_riski/data/models/product/cart_model.dart';
 import 'package:test_muhammad_riski/data/models/product/product_model.dart';
 import 'package:test_muhammad_riski/domain/entity/auth/signin_entity.dart';
 import 'package:test_muhammad_riski/domain/entity/product/product_entity.dart';
@@ -20,6 +20,7 @@ class ProductController extends GetxController {
   Rx<ProductEntity> productEntity = ProductEntity.fromJson({}).obs;
   RxList categories = [].obs;
   RxList<ProductEntity> listProduct = <ProductEntity>[].obs;
+  RxList<ProductEntity> listProductCart = <ProductEntity>[].obs;
 
 //STRING
   RxString firstname = ''.obs;
@@ -29,14 +30,17 @@ class ProductController extends GetxController {
 
   //INT
   RxInt limit = 10.obs;
+  RxInt userId = 1.obs;
 
   //BOOL
   RxBool loadingProduct = false.obs;
   RxBool initial = true.obs;
   RxBool detailLoading = false.obs;
+  RxBool addCartLoading = false.obs;
+  RxBool loadingCart = false.obs;
 
   sessionData() async {
-    final model = SigninModel(id: '1');
+    final model = SigninModel(id: userId.value.toString());
     final result = await repository.getUserByID(model);
     result.when(
       success: (data, url, headers, statusCode) {
@@ -89,7 +93,6 @@ class ProductController extends GetxController {
     final result = await repository.getProductByCategories(categories);
     result.when(
       success: (data, url, headers, statusCode) {
-        log('datanya ${data} ${url}');
         listProduct.value = productEntityFromJson(data);
         Future.delayed(Duration(seconds: 2), () {
           initial.value = false;
@@ -97,7 +100,6 @@ class ProductController extends GetxController {
         });
       },
       error: (data, url, headers, statusCode) {
-        log('datanya ${data} ${url}');
         loadingProduct.value = false;
       },
       failure: (networkException) {
@@ -113,9 +115,8 @@ class ProductController extends GetxController {
     final result = await repository.getProductById(model);
     result.when(
       success: (data, url, headers, statusCode) {
-        log('datanya ${data}');
         productEntity.value = productEntitySingleFromJson(data);
-        Future.delayed(Duration(seconds: 2), () {
+        Future.delayed(Duration(seconds: 1), () {
           detailLoading.value = false;
         });
       },
@@ -137,6 +138,65 @@ class ProductController extends GetxController {
         getProduct();
       }
     }
+  }
+
+  addCart() async {
+    addCartLoading.value = true;
+    final date = DateTime.now();
+    final dateFormated = DateFormat('yyyy-MM-dd').format(date);
+    final model = CartModel(
+        userId: userId.value.toString(),
+        date: dateFormated,
+        products: [
+          {"productId": productEntity.value.id, "quantity": 1}
+        ]);
+    final result = await repository.addCart(model);
+    result.when(
+      success: (data, url, headers, statusCode) {
+        Future.delayed(Duration(seconds: 1));
+        addCartLoading.value = false;
+      },
+      error: (data, url, headers, statusCode) {},
+      failure: (networkException) {},
+    );
+  }
+
+  getChartUser() async {
+    loadingCart.value = true;
+    listProductCart.clear();
+    final result = await repository.getCart(userId.value.toString());
+    result.when(
+      success: (data, url, headers, statusCode) async {
+        final product = jsonDecode(data);
+        if (product != null)
+          for (var element in product) {
+            if (element.isNotEmpty)
+              for (var i = 0; i < element['products'].length; i++) {
+                final prd = element['products'][i];
+                final model = ProductModel(id: prd['productId'].toString());
+                final resultProductId = await repository.getProductById(model);
+                resultProductId.when(
+                  success: (data, url, headers, statusCode) {
+                    var dataDecode = jsonDecode(data);
+                    dataDecode.addAll({'quantity': prd['quantity']});
+                    final productById = ProductEntity.fromJson(dataDecode);
+                    listProductCart.add(productById);
+                  },
+                  error: (data, url, headers, statusCode) {},
+                  failure: (networkException) {},
+                );
+              }
+          }
+        loadingCart.value = false;
+      },
+      error: (data, url, headers, statusCode) {
+        loadingCart.value = false;
+      },
+      failure: (networkException) {
+        loadingCart.value = false;
+      },
+    );
+    loadingCart.refresh();
   }
 
   @override

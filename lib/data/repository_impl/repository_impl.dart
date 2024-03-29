@@ -1,4 +1,5 @@
 import 'package:test_muhammad_riski/core/constants/string_constants.dart';
+import 'package:test_muhammad_riski/data/models/product/cart_model.dart';
 import 'package:test_muhammad_riski/data/models/product/product_model.dart';
 import 'package:test_muhammad_riski/data/providers/network/contract.dart';
 import 'package:test_muhammad_riski/data/providers/network/model/api_results.dart';
@@ -149,6 +150,49 @@ class RepositoryImplementation extends Repository {
           method: NetworkModel.get(
         networkParameter: NetworkParameter(
           url: baseUrl + productEndPoint + "/${model.id}",
+          header: {
+            "Content-type": "application/json",
+            "Accept": "application/json",
+          },
+        ),
+      ));
+    } catch (e) {
+      apiResult = const ApiResult.failure(
+          networkException: NetworkException.unknownExeption());
+    }
+    return apiResult;
+  }
+
+  @override
+  Future<ApiResult> addCart(CartModel model) async {
+    ApiResult apiResult;
+    try {
+      apiResult = await network.callApi(
+          method: NetworkModel.post(
+        networkParameter: NetworkParameter(
+          url: baseUrl + cartsEndpoint,
+          requestBody: model.toJson(),
+          header: {
+            "Content-type": "application/json",
+            "Accept": "application/json",
+          },
+        ),
+      ));
+    } catch (e) {
+      apiResult = const ApiResult.failure(
+          networkException: NetworkException.unknownExeption());
+    }
+    return apiResult;
+  }
+
+  @override
+  Future<ApiResult> getCart(String id) async {
+    ApiResult apiResult;
+    try {
+      apiResult = await network.callApi(
+          method: NetworkModel.get(
+        networkParameter: NetworkParameter(
+          url: baseUrl + cartsEndpoint + "/user/$id",
           header: {
             "Content-type": "application/json",
             "Accept": "application/json",

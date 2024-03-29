@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:test_muhammad_riski/presentation/routes/app_routes.dart';
 import '../../../../core/extensions/material_color.dart';
 import '../../../../core/extensions/text_style.dart';
 import '../../../../domain/entity/auth/signin_entity.dart';
@@ -29,7 +31,9 @@ class AppbarProduct {
   List<Widget> action() {
     return [
       IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-      IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart_outlined)),
+      IconButton(
+          onPressed: () => Get.toNamed(AppRoutes.cart),
+          icon: Icon(Icons.shopping_cart_outlined)),
       SizedBox(width: 4),
     ];
   }

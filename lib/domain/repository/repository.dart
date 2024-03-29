@@ -1,3 +1,4 @@
+import 'package:test_muhammad_riski/data/models/product/cart_model.dart';
 import 'package:test_muhammad_riski/data/models/product/product_model.dart';
 import 'package:test_muhammad_riski/data/providers/network/model/api_results.dart';
 
@@ -12,4 +13,6 @@ abstract class Repository {
   Future<ApiResult> getProduct(ProductModel model);
   Future<ApiResult> getProductById(ProductModel model);
   Future<ApiResult> getProductByCategories(String categories);
+  Future<ApiResult> addCart(CartModel model);
+  Future<ApiResult> getCart(String limit);
 }
