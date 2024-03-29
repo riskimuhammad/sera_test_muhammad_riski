@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:test_muhammad_riski/data/models/product/product_model.dart';
 import 'package:test_muhammad_riski/domain/entity/auth/signin_entity.dart';
@@ -17,8 +16,6 @@ class ProductController extends GetxController {
   RxList<CategoryEntity> listCategories = <CategoryEntity>[].obs;
   RxList<ProductEntity> listProduct = <ProductEntity>[].obs;
   RxBool loadingProduct = false.obs;
-  RxString firstname = ''.obs;
-  RxString lastname = ''.obs;
 
   sessionData() async {
     final result = await localRepository.getsession();

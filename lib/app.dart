@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_muhammad_riski/core/utils/depedency.dart';
 import 'package:test_muhammad_riski/presentation/routes/app_pages.dart';
 import 'package:test_muhammad_riski/presentation/routes/app_routes.dart';
 
@@ -9,6 +10,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: Depedency(),
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fade,
       title: 'SERA TEST MUHAMMAD RISKI',

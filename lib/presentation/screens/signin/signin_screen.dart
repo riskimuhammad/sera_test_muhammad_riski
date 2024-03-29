@@ -22,11 +22,12 @@ class SigninScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Image.asset(ImagePath.logo),
+              //GANTI usernameController jika memakai api https://api.escuelajs.co/
               _field(
                   obscureText: false,
-                  hintText: 'Email',
+                  hintText: 'Username',
                   icons: Icons.person,
-                  controller: controller.emailController),
+                  controller: controller.usernameController),
               SizedBox(height: 10),
               Obx(
                 () => _field(

@@ -17,7 +17,7 @@ class LocalRepositoryImpl extends LocalRepository {
       localResult = await box.callBox(
           method: LocalModel.set(
               localSessionParameter:
-                  LocalParameter(value: model.access_token, key: 'token')));
+                  LocalParameter(value: model.token, key: 'token')));
     } catch (e) {
       localResult = const LocalResult.failure(data: 'error tidak di ketahui');
     }

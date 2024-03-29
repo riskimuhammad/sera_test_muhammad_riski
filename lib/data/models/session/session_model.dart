@@ -6,9 +6,13 @@ part 'session_model.g.dart';
 @freezed
 class SessionModel with _$SessionModel {
   const factory SessionModel(
-      {String? access_token,
+      {String? token,
+      Map<String, dynamic>? name,
+
+      //FOR API https://api.escuelajs.co/
+      String? access_token,
       String? refresh_token,
-      String? name,
+      // String? name,
       String? role,
       String? avatar}) = _SessionModel;
 

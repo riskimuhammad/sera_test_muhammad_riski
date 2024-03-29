@@ -9,9 +9,12 @@ SigninEntity signinEntityFromJson(String str) =>
 @freezed
 class SigninEntity with _$SigninEntity {
   const factory SigninEntity(
-      {String? access_token,
+      {String? token,
+      Map<String, dynamic>? name,
+      //FOR API https://api.escuelajs.co/
+      String? access_token,
       String? refresh_token,
-      String? name,
+      // String? name,
       String? role,
       String? avatar}) = _SigninEntity;
 

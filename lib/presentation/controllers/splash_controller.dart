@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:test_muhammad_riski/data/models/session/session_model.dart';
 import 'package:test_muhammad_riski/domain/repository/local_repository.dart';
@@ -25,7 +26,14 @@ class SplashController extends GetxController {
     final res = await localRepository.getToken();
     res.when(
       success: (data) {
-        sessionChecker(data);
+        log('Token ${data}');
+
+        if (data.isNotEmpty) {
+          Get.offAndToNamed(AppRoutes.product);
+        } else {
+          Get.offAndToNamed(AppRoutes.signin);
+        }
+        // sessionChecker(data);
       },
       failure: (data) {
         Get.offAndToNamed(AppRoutes.signin);
@@ -33,6 +41,7 @@ class SplashController extends GetxController {
     );
   }
 
+//FOR API https://api.escuelajs.co/
   sessionChecker(token) async {
     ApiResult sessionResult =
         await repository.sessionAuth(SigninModel(token: token));
@@ -49,6 +58,7 @@ class SplashController extends GetxController {
       failure: (networkException) {},
     );
   }
+  //<----->
 
   @override
   void onInit() {

@@ -6,8 +6,10 @@ part 'signin_model.g.dart';
 @freezed
 class SigninModel with _$SigninModel {
   const factory SigninModel({
-    String? email,
+    String? username,
     String? password,
+    //FOR API https://api.escuelajs.co/
+    String? email,
     String? token,
   }) = _SigninModel;
 

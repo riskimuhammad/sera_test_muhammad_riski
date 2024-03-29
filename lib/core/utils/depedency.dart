@@ -13,9 +13,9 @@ import 'package:test_muhammad_riski/domain/repository/repository.dart';
 import '../../data/providers/local/box/local_implementation.dart';
 import '../../data/providers/network/http/http_contract.dart';
 
-class Depedency {
-  static init() {
-    //HTTP
+class Depedency implements Bindings {
+  @override
+  void dependencies() {
     Get.lazyPut<HttpNetwork>(() => HttpNetworkImplementation(), fenix: true);
     Get.lazyPut<Network>(() => NetworkImplementation(Get.find<HttpNetwork>()));
     Get.lazyPut<Repository>(
