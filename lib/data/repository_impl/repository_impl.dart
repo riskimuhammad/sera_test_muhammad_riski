@@ -82,10 +82,28 @@ class RepositoryImplementation extends Repository {
       apiResult = await network.callApi(
           method: NetworkModel.get(
         networkParameter: NetworkParameter(
-          url: baseUrl +
-              productPath +
-              productEndPoint +
-              "?offset=${model.offset}&limit=${model.limit}",
+          url: baseUrl + productEndPoint + "?limit=${model.limit}",
+          header: {
+            "Content-type": "application/json",
+            "Accept": "application/json",
+          },
+        ),
+      ));
+    } catch (e) {
+      apiResult = const ApiResult.failure(
+          networkException: NetworkException.unknownExeption());
+    }
+    return apiResult;
+  }
+
+  @override
+  Future<ApiResult> getUserByID(SigninModel model) async {
+    ApiResult apiResult;
+    try {
+      apiResult = await network.callApi(
+          method: NetworkModel.get(
+        networkParameter: NetworkParameter(
+          url: baseUrl + user + "${model.id}",
           header: {
             "Content-type": "application/json",
             "Accept": "application/json",

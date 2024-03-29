@@ -7,6 +7,7 @@ part 'signin_model.g.dart';
 class SigninModel with _$SigninModel {
   const factory SigninModel({
     String? username,
+    String? id,
     String? password,
     //FOR API https://api.escuelajs.co/
     String? email,

@@ -7,8 +7,9 @@ import '../../../../core/extensions/text_style.dart';
 import '../../../../domain/entity/product/product_entity.dart';
 
 class ListProduct {
-  productLoaded(List<ProductEntity> listProduct) {
+  productLoaded(List<ProductEntity> listProduct, controller) {
     return GridView.builder(
+        controller: controller,
         itemCount: listProduct.length,
         padding: EdgeInsets.only(bottom: 20),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -29,15 +30,21 @@ class ListProduct {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (listProduct[index].images != null)
-                    ClipRRect(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10)),
-                      child: NetworkImageExtemsion.image(
-                          listProduct[index].images!.first,
-                          isProfile: false),
+                  SizedBox(height: 16),
+                  Align(
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                      height: 150,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10)),
+                        child: NetworkImageExtemsion.image(
+                            listProduct[index].image,
+                            isProfile: false),
+                      ),
                     ),
+                  ),
                   Padding(
                     padding:
                         const EdgeInsets.only(left: 16, right: 16, top: 16),
@@ -46,12 +53,36 @@ class ListProduct {
                       children: [
                         Text(
                           listProduct[index].title ?? '',
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
                           style: MTextStyle.textStyleNormalW400,
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: 16),
                         Text(
                           CurrFormatedNumber.formated(listProduct[index].price),
                           style: MTextStyle.textStyleNormalW600,
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 16, right: 16, top: 16),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.star,
+                          color: MColors.amber,
+                          size: 15,
+                        ),
+                        Text(
+                          "${listProduct[index].rating!['rate']}",
+                          style: MTextStyle.textStyleFZ13W400,
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          "${listProduct[index].rating!['count']} Reviews",
+                          style: MTextStyle.textStyleFZ13W400,
                         )
                       ],
                     ),

@@ -32,11 +32,11 @@ class AppbarProduct {
     ];
   }
 
-  info() {
+  info(name) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Hi, Jhon', style: MTextStyle.textStyleFZ15W300),
+        Text('Hi, $name', style: MTextStyle.textStyleFZ15W300),
         Text('What are you looking for today?',
             maxLines: 2,
             overflow: TextOverflow.ellipsis,

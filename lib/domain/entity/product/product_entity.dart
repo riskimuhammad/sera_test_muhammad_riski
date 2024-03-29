@@ -12,12 +12,16 @@ class ProductEntity with _$ProductEntity {
   const factory ProductEntity({
     int? id,
     String? title,
-    int? price,
+    // int? price,
+    double? price,
     String? description,
-    List<String>? images,
+    // List<String>? images,
+    String? image,
     String? creationAt,
     String? updatedAt,
-    Map<String, dynamic>? category,
+    Map<String, dynamic>? rating,
+    // Map<String, dynamic>? category,
+    String? category,
   }) = _ProductEntity;
 
   factory ProductEntity.fromJson(Map<String, dynamic> json) =>

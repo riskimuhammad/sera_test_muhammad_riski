@@ -1,6 +1,6 @@
-import 'dart:convert';
-
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_muhammad_riski/data/models/auth/signin_model.dart';
 import 'package:test_muhammad_riski/data/models/product/product_model.dart';
 import 'package:test_muhammad_riski/domain/entity/auth/signin_entity.dart';
 import 'package:test_muhammad_riski/domain/entity/product/category_entity.dart';
@@ -17,17 +17,23 @@ class ProductController extends GetxController {
   RxList<CategoryEntity> listCategories = <CategoryEntity>[].obs;
   RxList<ProductEntity> listProduct = <ProductEntity>[].obs;
   RxBool loadingProduct = false.obs;
+  RxBool initial = true.obs;
   RxString firstname = ''.obs;
   RxString lastname = ''.obs;
+  Rx<ScrollController> scrollController = ScrollController().obs;
+  RxInt limit = 10.obs;
 
   sessionData() async {
-    final result = await localRepository.getsession();
+    final model = SigninModel(id: '1');
+    final result = await repository.getUserByID(model);
     result.when(
-      success: (data) {
-        final dataDecode = json.decode(data);
-        dataUser.value = SigninEntity.fromJson(dataDecode);
+      success: (data, url, headers, statusCode) {
+        dataUser.value = signinEntityFromJson(data);
+        firstname.value = dataUser.value.name!['firstname'];
+        lastname.value = dataUser.value.name!['lastname'];
       },
-      failure: (data) {},
+      error: (data, url, headers, statusCode) {},
+      failure: (networkException) {},
     );
   }
 
@@ -50,12 +56,13 @@ class ProductController extends GetxController {
 
   getProduct() async {
     loadingProduct.value = true;
-    final model = ProductModel(limit: '10', offset: '0');
+    final model = ProductModel(limit: limit.value.toString(), offset: '0');
     final result = await repository.getProduct(model);
     result.when(
       success: (data, url, headers, statusCode) {
         listProduct.value = productEntityFromJson(data);
         Future.delayed(Duration(seconds: 2), () {
+          initial.value = false;
           loadingProduct.value = false;
         });
       },
@@ -67,5 +74,21 @@ class ProductController extends GetxController {
       },
     );
     loadingProduct.refresh();
+  }
+
+  onScroll() {
+    if (scrollController.value.position.pixels ==
+        scrollController.value.position.maxScrollExtent) {
+      limit.value += 10;
+      getProduct();
+    }
+  }
+
+  @override
+  void onInit() {
+    limit.value = 10;
+    initial.value = true;
+    scrollController.value.addListener(onScroll);
+    super.onInit();
   }
 }

@@ -1,5 +1,6 @@
 String baseUrl = 'https://fakestoreapi.com/';
 String authPath = 'auth/';
+String user = 'users/';
 String authEndPoint = 'login';
 String profileEndPoint = 'profile';
 

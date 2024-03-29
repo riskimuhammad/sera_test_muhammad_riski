@@ -21,7 +21,7 @@ class ProductScreen extends StatelessWidget {
     }, builder: (controller) {
       return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(250),
+          preferredSize: Size.fromHeight(270),
           child: AppBar(
             leadingWidth: 65,
             leading: Obx(
@@ -33,13 +33,14 @@ class ProductScreen extends StatelessWidget {
             flexibleSpace: Stack(
               children: [
                 Positioned(
-                    bottom: 0,
+                    bottom: 20,
                     left: 16,
                     right: 16,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _appbar.info(),
+                        Obx(() =>
+                            _appbar.info("${_controller.firstname.value}")),
                         Obx(() => _category.category(context,
                             listCategories: controller.listCategories))
                       ],
@@ -49,12 +50,13 @@ class ProductScreen extends StatelessWidget {
           ),
         ),
         body: Container(
-          margin: EdgeInsets.only(left: 16, right: 16, top: 16),
+          margin: EdgeInsets.only(left: 16, right: 16),
           child: Obx(() {
-            if (controller.loadingProduct.isTrue) {
+            if (controller.loadingProduct.isTrue && controller.initial.isTrue) {
               return _listProduct.loadingProduct();
             } else {
-              return _listProduct.productLoaded(controller.listProduct);
+              return _listProduct.productLoaded(
+                  controller.listProduct, controller.scrollController.value);
             }
           }),
         ),

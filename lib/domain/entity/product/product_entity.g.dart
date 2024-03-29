@@ -10,13 +10,13 @@ _$ProductEntityImpl _$$ProductEntityImplFromJson(Map<String, dynamic> json) =>
     _$ProductEntityImpl(
       id: json['id'] as int?,
       title: json['title'] as String?,
-      price: json['price'] as int?,
+      price: (json['price'] as num?)?.toDouble(),
       description: json['description'] as String?,
-      images:
-          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      image: json['image'] as String?,
       creationAt: json['creationAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
-      category: json['category'] as Map<String, dynamic>?,
+      rating: json['rating'] as Map<String, dynamic>?,
+      category: json['category'] as String?,
     );
 
 Map<String, dynamic> _$$ProductEntityImplToJson(_$ProductEntityImpl instance) =>
@@ -25,8 +25,9 @@ Map<String, dynamic> _$$ProductEntityImplToJson(_$ProductEntityImpl instance) =>
       'title': instance.title,
       'price': instance.price,
       'description': instance.description,
-      'images': instance.images,
+      'image': instance.image,
       'creationAt': instance.creationAt,
       'updatedAt': instance.updatedAt,
+      'rating': instance.rating,
       'category': instance.category,
     };

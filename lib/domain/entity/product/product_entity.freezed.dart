@@ -21,13 +21,16 @@ ProductEntity _$ProductEntityFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProductEntity {
   int? get id => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
-  int? get price => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  List<String>? get images => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError; // int? price,
+  double? get price => throw _privateConstructorUsedError;
+  String? get description =>
+      throw _privateConstructorUsedError; // List<String>? images,
+  String? get image => throw _privateConstructorUsedError;
   String? get creationAt => throw _privateConstructorUsedError;
   String? get updatedAt => throw _privateConstructorUsedError;
-  Map<String, dynamic>? get category => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get rating =>
+      throw _privateConstructorUsedError; // Map<String, dynamic>? category,
+  String? get category => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,12 +47,13 @@ abstract class $ProductEntityCopyWith<$Res> {
   $Res call(
       {int? id,
       String? title,
-      int? price,
+      double? price,
       String? description,
-      List<String>? images,
+      String? image,
       String? creationAt,
       String? updatedAt,
-      Map<String, dynamic>? category});
+      Map<String, dynamic>? rating,
+      String? category});
 }
 
 /// @nodoc
@@ -69,9 +73,10 @@ class _$ProductEntityCopyWithImpl<$Res, $Val extends ProductEntity>
     Object? title = freezed,
     Object? price = freezed,
     Object? description = freezed,
-    Object? images = freezed,
+    Object? image = freezed,
     Object? creationAt = freezed,
     Object? updatedAt = freezed,
+    Object? rating = freezed,
     Object? category = freezed,
   }) {
     return _then(_value.copyWith(
@@ -86,15 +91,15 @@ class _$ProductEntityCopyWithImpl<$Res, $Val extends ProductEntity>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      images: freezed == images
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
       creationAt: freezed == creationAt
           ? _value.creationAt
           : creationAt // ignore: cast_nullable_to_non_nullable
@@ -103,10 +108,14 @@ class _$ProductEntityCopyWithImpl<$Res, $Val extends ProductEntity>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
+      rating: freezed == rating
+          ? _value.rating
+          : rating // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
+              as String?,
     ) as $Val);
   }
 }
@@ -122,12 +131,13 @@ abstract class _$$ProductEntityImplCopyWith<$Res>
   $Res call(
       {int? id,
       String? title,
-      int? price,
+      double? price,
       String? description,
-      List<String>? images,
+      String? image,
       String? creationAt,
       String? updatedAt,
-      Map<String, dynamic>? category});
+      Map<String, dynamic>? rating,
+      String? category});
 }
 
 /// @nodoc
@@ -145,9 +155,10 @@ class __$$ProductEntityImplCopyWithImpl<$Res>
     Object? title = freezed,
     Object? price = freezed,
     Object? description = freezed,
-    Object? images = freezed,
+    Object? image = freezed,
     Object? creationAt = freezed,
     Object? updatedAt = freezed,
+    Object? rating = freezed,
     Object? category = freezed,
   }) {
     return _then(_$ProductEntityImpl(
@@ -162,15 +173,15 @@ class __$$ProductEntityImplCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      images: freezed == images
-          ? _value._images
-          : images // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
       creationAt: freezed == creationAt
           ? _value.creationAt
           : creationAt // ignore: cast_nullable_to_non_nullable
@@ -179,10 +190,14 @@ class __$$ProductEntityImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      category: freezed == category
-          ? _value._category
-          : category // ignore: cast_nullable_to_non_nullable
+      rating: freezed == rating
+          ? _value._rating
+          : rating // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
+      category: freezed == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -195,12 +210,12 @@ class _$ProductEntityImpl implements _ProductEntity {
       this.title,
       this.price,
       this.description,
-      final List<String>? images,
+      this.image,
       this.creationAt,
       this.updatedAt,
-      final Map<String, dynamic>? category})
-      : _images = images,
-        _category = category;
+      final Map<String, dynamic>? rating,
+      this.category})
+      : _rating = rating;
 
   factory _$ProductEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductEntityImplFromJson(json);
@@ -209,37 +224,35 @@ class _$ProductEntityImpl implements _ProductEntity {
   final int? id;
   @override
   final String? title;
+// int? price,
   @override
-  final int? price;
+  final double? price;
   @override
   final String? description;
-  final List<String>? _images;
+// List<String>? images,
   @override
-  List<String>? get images {
-    final value = _images;
-    if (value == null) return null;
-    if (_images is EqualUnmodifiableListView) return _images;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final String? image;
   @override
   final String? creationAt;
   @override
   final String? updatedAt;
-  final Map<String, dynamic>? _category;
+  final Map<String, dynamic>? _rating;
   @override
-  Map<String, dynamic>? get category {
-    final value = _category;
+  Map<String, dynamic>? get rating {
+    final value = _rating;
     if (value == null) return null;
-    if (_category is EqualUnmodifiableMapView) return _category;
+    if (_rating is EqualUnmodifiableMapView) return _rating;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(value);
   }
 
+// Map<String, dynamic>? category,
+  @override
+  final String? category;
+
   @override
   String toString() {
-    return 'ProductEntity(id: $id, title: $title, price: $price, description: $description, images: $images, creationAt: $creationAt, updatedAt: $updatedAt, category: $category)';
+    return 'ProductEntity(id: $id, title: $title, price: $price, description: $description, image: $image, creationAt: $creationAt, updatedAt: $updatedAt, rating: $rating, category: $category)';
   }
 
   @override
@@ -252,12 +265,14 @@ class _$ProductEntityImpl implements _ProductEntity {
             (identical(other.price, price) || other.price == price) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(other._images, _images) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.creationAt, creationAt) ||
                 other.creationAt == creationAt) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
-            const DeepCollectionEquality().equals(other._category, _category));
+            const DeepCollectionEquality().equals(other._rating, _rating) &&
+            (identical(other.category, category) ||
+                other.category == category));
   }
 
   @JsonKey(ignore: true)
@@ -268,10 +283,11 @@ class _$ProductEntityImpl implements _ProductEntity {
       title,
       price,
       description,
-      const DeepCollectionEquality().hash(_images),
+      image,
       creationAt,
       updatedAt,
-      const DeepCollectionEquality().hash(_category));
+      const DeepCollectionEquality().hash(_rating),
+      category);
 
   @JsonKey(ignore: true)
   @override
@@ -291,12 +307,13 @@ abstract class _ProductEntity implements ProductEntity {
   const factory _ProductEntity(
       {final int? id,
       final String? title,
-      final int? price,
+      final double? price,
       final String? description,
-      final List<String>? images,
+      final String? image,
       final String? creationAt,
       final String? updatedAt,
-      final Map<String, dynamic>? category}) = _$ProductEntityImpl;
+      final Map<String, dynamic>? rating,
+      final String? category}) = _$ProductEntityImpl;
 
   factory _ProductEntity.fromJson(Map<String, dynamic> json) =
       _$ProductEntityImpl.fromJson;
@@ -305,18 +322,20 @@ abstract class _ProductEntity implements ProductEntity {
   int? get id;
   @override
   String? get title;
-  @override
-  int? get price;
+  @override // int? price,
+  double? get price;
   @override
   String? get description;
-  @override
-  List<String>? get images;
+  @override // List<String>? images,
+  String? get image;
   @override
   String? get creationAt;
   @override
   String? get updatedAt;
   @override
-  Map<String, dynamic>? get category;
+  Map<String, dynamic>? get rating;
+  @override // Map<String, dynamic>? category,
+  String? get category;
   @override
   @JsonKey(ignore: true)
   _$$ProductEntityImplCopyWith<_$ProductEntityImpl> get copyWith =>
