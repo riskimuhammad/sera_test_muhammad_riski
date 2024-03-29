@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_muhammad_riski/core/extensions/network_image.dart';
-
+import '../../../../core/extensions/material_color.dart';
 import '../../../../core/extensions/text_style.dart';
 import '../../../../domain/entity/auth/signin_entity.dart';
 
@@ -11,7 +10,10 @@ class AppbarProduct {
       child: CircleAvatar(
         child: ClipRRect(
           borderRadius: BorderRadius.circular(50),
-          child: NetworkImageExtemsion.image(dataUser!.avatar, isProfile: true),
+          child: Icon(
+            Icons.person,
+            color: MColors.white,
+          ),
         ),
       ),
     );

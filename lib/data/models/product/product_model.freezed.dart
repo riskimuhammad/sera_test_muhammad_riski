@@ -21,6 +21,7 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProductModel {
   String? get limit => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String? get offset => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $ProductModelCopyWith<$Res> {
           ProductModel value, $Res Function(ProductModel) then) =
       _$ProductModelCopyWithImpl<$Res, ProductModel>;
   @useResult
-  $Res call({String? limit, String? offset});
+  $Res call({String? limit, String? id, String? offset});
 }
 
 /// @nodoc
@@ -52,12 +53,17 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
   @override
   $Res call({
     Object? limit = freezed,
+    Object? id = freezed,
     Object? offset = freezed,
   }) {
     return _then(_value.copyWith(
       limit: freezed == limit
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String?,
       offset: freezed == offset
           ? _value.offset
@@ -75,7 +81,7 @@ abstract class _$$ProductModelImplCopyWith<$Res>
       __$$ProductModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? limit, String? offset});
+  $Res call({String? limit, String? id, String? offset});
 }
 
 /// @nodoc
@@ -90,12 +96,17 @@ class __$$ProductModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? limit = freezed,
+    Object? id = freezed,
     Object? offset = freezed,
   }) {
     return _then(_$ProductModelImpl(
       limit: freezed == limit
           ? _value.limit
           : limit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String?,
       offset: freezed == offset
           ? _value.offset
@@ -108,7 +119,7 @@ class __$$ProductModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ProductModelImpl implements _ProductModel {
-  const _$ProductModelImpl({this.limit, this.offset});
+  const _$ProductModelImpl({this.limit, this.id, this.offset});
 
   factory _$ProductModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductModelImplFromJson(json);
@@ -116,11 +127,13 @@ class _$ProductModelImpl implements _ProductModel {
   @override
   final String? limit;
   @override
+  final String? id;
+  @override
   final String? offset;
 
   @override
   String toString() {
-    return 'ProductModel(limit: $limit, offset: $offset)';
+    return 'ProductModel(limit: $limit, id: $id, offset: $offset)';
   }
 
   @override
@@ -129,12 +142,13 @@ class _$ProductModelImpl implements _ProductModel {
         (other.runtimeType == runtimeType &&
             other is _$ProductModelImpl &&
             (identical(other.limit, limit) || other.limit == limit) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.offset, offset) || other.offset == offset));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, limit, offset);
+  int get hashCode => Object.hash(runtimeType, limit, id, offset);
 
   @JsonKey(ignore: true)
   @override
@@ -151,14 +165,18 @@ class _$ProductModelImpl implements _ProductModel {
 }
 
 abstract class _ProductModel implements ProductModel {
-  const factory _ProductModel({final String? limit, final String? offset}) =
-      _$ProductModelImpl;
+  const factory _ProductModel(
+      {final String? limit,
+      final String? id,
+      final String? offset}) = _$ProductModelImpl;
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
       _$ProductModelImpl.fromJson;
 
   @override
   String? get limit;
+  @override
+  String? get id;
   @override
   String? get offset;
   @override

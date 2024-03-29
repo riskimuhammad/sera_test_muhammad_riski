@@ -4,17 +4,12 @@ import 'image_path.dart';
 import 'material_color.dart';
 
 class NetworkImageExtemsion {
-  static image(String? path, {required bool isProfile}) {
+  static image(String? path) {
     return Image.network(
       "$path",
       errorBuilder: (context, error, stackTrace) => Container(
         color: MColors.primaryColorsGrey.shade700,
-        child: isProfile
-            ? Icon(
-                Icons.person,
-                color: MColors.white,
-              )
-            : Image.asset(ImagePath.noImage),
+        child: Image.asset(ImagePath.noImage),
       ),
       loadingBuilder: (context, child, loadingProgress) {
         if (loadingProgress != null) {

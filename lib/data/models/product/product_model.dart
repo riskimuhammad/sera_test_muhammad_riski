@@ -7,6 +7,7 @@ part 'product_model.g.dart';
 class ProductModel with _$ProductModel {
   const factory ProductModel({
     String? limit,
+    String? id,
     String? offset,
   }) = _ProductModel;
 

@@ -15,16 +15,25 @@ class ProductController extends GetxController {
   Repository repository;
   ProductController(this.localRepository, this.repository);
 
+//LIST OR OBJECT
   Rx<SigninEntity> dataUser = SigninEntity.fromJson({}).obs;
+  Rx<ProductEntity> productEntity = ProductEntity.fromJson({}).obs;
   RxList categories = [].obs;
   RxList<ProductEntity> listProduct = <ProductEntity>[].obs;
-  RxBool loadingProduct = false.obs;
-  RxBool initial = true.obs;
+
+//STRING
   RxString firstname = ''.obs;
   RxString lastname = ''.obs;
   Rx<ScrollController> scrollController = ScrollController().obs;
-  RxInt limit = 10.obs;
   RxString selectedCategories = ''.obs;
+
+  //INT
+  RxInt limit = 10.obs;
+
+  //BOOL
+  RxBool loadingProduct = false.obs;
+  RxBool initial = true.obs;
+  RxBool detailLoading = false.obs;
 
   sessionData() async {
     final model = SigninModel(id: '1');
@@ -96,6 +105,28 @@ class ProductController extends GetxController {
       },
     );
     loadingProduct.refresh();
+  }
+
+  getProductById(id) async {
+    detailLoading.value = true;
+    final model = ProductModel(id: id.toString());
+    final result = await repository.getProductById(model);
+    result.when(
+      success: (data, url, headers, statusCode) {
+        log('datanya ${data}');
+        productEntity.value = productEntitySingleFromJson(data);
+        Future.delayed(Duration(seconds: 2), () {
+          detailLoading.value = false;
+        });
+      },
+      error: (data, url, headers, statusCode) {
+        detailLoading.value = false;
+      },
+      failure: (networkException) {
+        detailLoading.value = false;
+      },
+    );
+    detailLoading.refresh();
   }
 
   onScroll() {

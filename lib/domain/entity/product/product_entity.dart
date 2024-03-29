@@ -6,6 +6,8 @@ part "product_entity.g.dart";
 List<ProductEntity> productEntityFromJson(String str) =>
     List<ProductEntity>.from(
         json.decode(str).map((x) => ProductEntity.fromJson(x)));
+ProductEntity productEntitySingleFromJson(String str) =>
+    ProductEntity.fromJson(json.decode(str));
 
 @freezed
 class ProductEntity with _$ProductEntity {

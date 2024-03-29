@@ -10,5 +10,6 @@ abstract class Repository {
 
   Future<ApiResult> getAllCategory();
   Future<ApiResult> getProduct(ProductModel model);
+  Future<ApiResult> getProductById(ProductModel model);
   Future<ApiResult> getProductByCategories(String categories);
 }

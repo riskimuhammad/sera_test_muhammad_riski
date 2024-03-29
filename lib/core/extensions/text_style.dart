@@ -30,6 +30,8 @@ class MTextStyle {
       fontSize: 13, color: MColors.black, fontWeight: FontWeight.w400);
   static TextStyle textStyleFZ28W500 = TextStyle(
       fontSize: 28, color: MColors.black, fontWeight: FontWeight.w500);
+  static TextStyle textStyleFZ20W500 = TextStyle(
+      fontSize: 20, color: MColors.black, fontWeight: FontWeight.w500);
   static TextStyle textStyleFZ18CDarkBlueBold = TextStyle(
       fontSize: 18, color: MColors.blue.shade100, fontWeight: FontWeight.bold);
 }

@@ -140,4 +140,25 @@ class RepositoryImplementation extends Repository {
     }
     return apiResult;
   }
+
+  @override
+  Future<ApiResult> getProductById(ProductModel model) async {
+    ApiResult apiResult;
+    try {
+      apiResult = await network.callApi(
+          method: NetworkModel.get(
+        networkParameter: NetworkParameter(
+          url: baseUrl + productEndPoint + "/${model.id}",
+          header: {
+            "Content-type": "application/json",
+            "Accept": "application/json",
+          },
+        ),
+      ));
+    } catch (e) {
+      apiResult = const ApiResult.failure(
+          networkException: NetworkException.unknownExeption());
+    }
+    return apiResult;
+  }
 }
