@@ -61,7 +61,7 @@ class RepositoryImplementation extends Repository {
       apiResult = await network.callApi(
           method: NetworkModel.get(
         networkParameter: NetworkParameter(
-          url: baseUrl + productPath + categoryEndPoint,
+          url: baseUrl + productEndPoint + categoryEndPoint,
           header: {
             "Content-type": "application/json",
             "Accept": "application/json",
@@ -104,6 +104,30 @@ class RepositoryImplementation extends Repository {
           method: NetworkModel.get(
         networkParameter: NetworkParameter(
           url: baseUrl + user + "${model.id}",
+          header: {
+            "Content-type": "application/json",
+            "Accept": "application/json",
+          },
+        ),
+      ));
+    } catch (e) {
+      apiResult = const ApiResult.failure(
+          networkException: NetworkException.unknownExeption());
+    }
+    return apiResult;
+  }
+
+  @override
+  Future<ApiResult> getProductByCategories(String categories) async {
+    ApiResult apiResult;
+    try {
+      apiResult = await network.callApi(
+          method: NetworkModel.get(
+        networkParameter: NetworkParameter(
+          url: baseUrl +
+              productEndPoint +
+              categoryByNameEndPoint +
+              '/$categories',
           header: {
             "Content-type": "application/json",
             "Accept": "application/json",

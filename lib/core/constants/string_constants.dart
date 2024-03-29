@@ -5,6 +5,6 @@ String authEndPoint = 'login';
 String profileEndPoint = 'profile';
 
 //PRODUCT PATH,ENDPOINT
-String productPath = 'api/v1/';
-String categoryEndPoint = 'categories';
+String categoryEndPoint = '/categories';
+String categoryByNameEndPoint = '/category';
 String productEndPoint = 'products';

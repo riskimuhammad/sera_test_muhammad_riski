@@ -1,47 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:test_muhammad_riski/core/extensions/text_style.dart';
+import 'package:test_muhammad_riski/presentation/controllers/product_controller.dart';
 import '../../../../core/extensions/material_color.dart';
-import '../../../../domain/entity/product/category_entity.dart';
 
 class ListCategory {
-  category(context, {required List<CategoryEntity> listCategories}) {
+  final _controller = Get.find<ProductController>();
+  category(context, {required List<dynamic> listCategories, onPressAll}) {
     return Container(
       height: 40,
       width: MediaQuery.of(context).size.width,
-      child: Row(
-        children: [
-          ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(MColors.blue.shade800)),
-              onPressed: () {},
-              child: Text('All', style: MTextStyle.textStyleFZ15W400)),
-          SizedBox(width: 10),
-          Expanded(
-              child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: listCategories.length,
-            itemBuilder: (context, index) => Container(
-              padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
-              margin: EdgeInsets.only(right: 10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: MColors.blue.shade100.withOpacity(.1)),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    maxRadius: 15,
-                    backgroundImage:
-                        NetworkImage("${listCategories[index].image}"),
-                  ),
-                  SizedBox(width: 5),
-                  Text(listCategories[index].name ?? '',
-                      style: MTextStyle.textStyleFZ15W400)
-                ],
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            ElevatedButton(
+                style: ButtonStyle(
+                    elevation: MaterialStateProperty.all(0.0),
+                    backgroundColor: MaterialStateProperty.all(
+                        _controller.selectedCategories.isEmpty
+                            ? MColors.blue.shade800
+                            : MColors.blue.shade100.withOpacity(.1))),
+                onPressed: onPressAll,
+                child: Text('All', style: MTextStyle.textStyleFZ15W400)),
+            SizedBox(width: 10),
+            ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: listCategories.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () =>
+                    _controller.getProductByCategories(listCategories[index]),
+                child: Container(
+                  padding:
+                      EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                  margin: EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: _controller.selectedCategories ==
+                              listCategories[index]
+                          ? MColors.blue.shade800
+                          : MColors.blue.shade100.withOpacity(.1)),
+                  child: Text(listCategories[index],
+                      style: MTextStyle.textStyleFZ15W400),
+                ),
               ),
-            ),
-          ))
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

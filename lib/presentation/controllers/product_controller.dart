@@ -1,9 +1,11 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_muhammad_riski/data/models/auth/signin_model.dart';
 import 'package:test_muhammad_riski/data/models/product/product_model.dart';
 import 'package:test_muhammad_riski/domain/entity/auth/signin_entity.dart';
-import 'package:test_muhammad_riski/domain/entity/product/category_entity.dart';
 import 'package:test_muhammad_riski/domain/entity/product/product_entity.dart';
 import 'package:test_muhammad_riski/domain/repository/local_repository.dart';
 import 'package:test_muhammad_riski/domain/repository/repository.dart';
@@ -14,7 +16,7 @@ class ProductController extends GetxController {
   ProductController(this.localRepository, this.repository);
 
   Rx<SigninEntity> dataUser = SigninEntity.fromJson({}).obs;
-  RxList<CategoryEntity> listCategories = <CategoryEntity>[].obs;
+  RxList categories = [].obs;
   RxList<ProductEntity> listProduct = <ProductEntity>[].obs;
   RxBool loadingProduct = false.obs;
   RxBool initial = true.obs;
@@ -22,6 +24,7 @@ class ProductController extends GetxController {
   RxString lastname = ''.obs;
   Rx<ScrollController> scrollController = ScrollController().obs;
   RxInt limit = 10.obs;
+  RxString selectedCategories = ''.obs;
 
   sessionData() async {
     final model = SigninModel(id: '1');
@@ -38,16 +41,10 @@ class ProductController extends GetxController {
   }
 
   getAllCategory() async {
-    List<String> allowedExtensions = ['jpg', 'jpeg', 'png'];
     final result = await repository.getAllCategory();
     result.when(
       success: (data, url, headers, statusCode) {
-        listCategories.value = categoryEntityFromJson(data).where((element) {
-          //FILTER DATA DENGAN EKTENSI IMG, UNTUK MENGAMBIL DATA YANG ADA GAMBAR SAJA
-          String image = element.image ?? '';
-          String extension = image.split('.').last.toLowerCase();
-          return allowedExtensions.contains(extension);
-        }).toList();
+        categories.value = jsonDecode(data);
       },
       error: (data, url, headers, statusCode) {},
       failure: (networkException) {},
@@ -76,11 +73,38 @@ class ProductController extends GetxController {
     loadingProduct.refresh();
   }
 
+  getProductByCategories(String categories) async {
+    selectedCategories.value = categories;
+    initial.value = true;
+    loadingProduct.value = true;
+    final result = await repository.getProductByCategories(categories);
+    result.when(
+      success: (data, url, headers, statusCode) {
+        log('datanya ${data} ${url}');
+        listProduct.value = productEntityFromJson(data);
+        Future.delayed(Duration(seconds: 2), () {
+          initial.value = false;
+          loadingProduct.value = false;
+        });
+      },
+      error: (data, url, headers, statusCode) {
+        log('datanya ${data} ${url}');
+        loadingProduct.value = false;
+      },
+      failure: (networkException) {
+        loadingProduct.value = false;
+      },
+    );
+    loadingProduct.refresh();
+  }
+
   onScroll() {
     if (scrollController.value.position.pixels ==
         scrollController.value.position.maxScrollExtent) {
       limit.value += 10;
-      getProduct();
+      if (selectedCategories.isEmpty) {
+        getProduct();
+      }
     }
   }
 

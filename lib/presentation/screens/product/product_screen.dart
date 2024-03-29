@@ -42,7 +42,12 @@ class ProductScreen extends StatelessWidget {
                         Obx(() =>
                             _appbar.info("${_controller.firstname.value}")),
                         Obx(() => _category.category(context,
-                            listCategories: controller.listCategories))
+                                listCategories: controller.categories,
+                                onPressAll: () {
+                              controller.selectedCategories.value = '';
+                              controller.initial.value = true;
+                              controller.getProduct();
+                            }))
                       ],
                     )),
               ],
